@@ -9,7 +9,7 @@
 }
 .creamy{
     -fx-background-color: rgba(248, 240, 227, 0.94);
-    -fx-background-radius: 25;
+    /*-fx-background-radius: 25;*/
 }
 .light{
     -fx-background-color: #F8F0E3F0;
