@@ -11,6 +11,7 @@ module db.bookstore {
 
     requires java.sql;
     requires org.postgresql.jdbc;
+    requires lombok;
 
     opens db.bookstore to javafx.fxml;
     exports db.bookstore;

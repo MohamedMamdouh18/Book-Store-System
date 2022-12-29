@@ -35,10 +35,12 @@ public abstract class DAO {
         return books;
     }
 
-    public void changeUserPassword(String userName, String newPassword) throws SQLException {
+    public void changeUserProfile(String userName, String attribute, String newValue) throws SQLException {
+        if (attribute.toLowerCase().equals("role") || attribute.toLowerCase().equals("username"))
+            return;
         Statement stmt = connection.createStatement();
         stmt.executeUpdate("update public.user u " +
-                "set password = '" + newPassword +
+                "set " + attribute + " = '" + newValue +
                 "' where username = '" + userName + "'; ");
     }
 }

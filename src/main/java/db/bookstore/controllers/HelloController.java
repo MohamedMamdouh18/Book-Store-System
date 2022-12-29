@@ -1,6 +1,6 @@
 package db.bookstore.controllers;
 
-import Database.DAO.CustomerDAO;
+import Database.DAO.ManagerDAO;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
@@ -13,7 +13,7 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() throws SQLException {
         welcomeText.setText("Welcome to JavaFX Application!");
-        CustomerDAO dao = new CustomerDAO();
-        dao.changeUserPassword("mamdouh", "111111");
+        ManagerDAO dao = new ManagerDAO();
+        dao.changeUserProfile("mamdouh", "first_name", "mamdouh");
     }
 }

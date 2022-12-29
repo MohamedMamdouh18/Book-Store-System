@@ -1,9 +1,16 @@
 package Database.Models;
 
+import lombok.*;
+
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Book {
     public String isbn;
     public String title;
@@ -23,5 +30,18 @@ public class Book {
         this.minimum_stock = set.getInt(6);
         this.stock = set.getInt(7);
         this.publisher_name = set.getString(8);
+    }
+
+    @Override
+    public String toString() {
+        return "('" + this.isbn + "','" +
+                this.title + "','" +
+                this.publication_year + "','" +
+                this.price + "','" +
+                this.category + "','" +
+                this.minimum_stock + "','" +
+                this.stock + "','" +
+                this.publisher_name + "'" +
+                ")";
     }
 }
