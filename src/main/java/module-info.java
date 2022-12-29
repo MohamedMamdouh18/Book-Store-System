@@ -9,6 +9,9 @@ module db.bookstore {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
 
+    requires java.sql;
+    requires org.postgresql.jdbc;
+
     opens db.bookstore to javafx.fxml;
     exports db.bookstore;
     exports db.bookstore.controllers;
