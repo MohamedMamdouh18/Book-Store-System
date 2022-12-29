@@ -4,23 +4,27 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.SignUpController">
    <children>
-      <TextField fx:id="Fname" layoutX="155.0" layoutY="111.0" />
-      <TextField fx:id="Lname" layoutX="392.0" layoutY="111.0" />
-      <TextField fx:id="userName" layoutX="155.0" layoutY="168.0" />
-      <TextField fx:id="pass" layoutX="155.0" layoutY="232.0" />
-      <TextField fx:id="email" layoutX="392.0" layoutY="168.0" />
-      <TextField fx:id="number" layoutX="154.0" layoutY="294.0" />
-      <TextField fx:id="Address" layoutX="153.0" layoutY="356.0" />
-      <Label layoutX="155.0" layoutY="87.0" prefHeight="18.0" prefWidth="94.0" text="First name" />
-      <Label layoutX="392.0" layoutY="87.0" prefHeight="18.0" prefWidth="150.0" text="Last name" />
-      <Label layoutX="156.0" layoutY="144.0" prefHeight="18.0" prefWidth="150.0" text="username" />
-      <Label layoutX="392.0" layoutY="144.0" prefHeight="18.0" prefWidth="150.0" text="Email" />
-      <Label layoutX="154.0" layoutY="203.0" prefHeight="18.0" prefWidth="150.0" text="Password" />
-      <Label layoutX="154.0" layoutY="267.0" prefHeight="18.0" prefWidth="174.0" text="Phone number" />
-      <Label layoutX="153.0" layoutY="331.0" prefHeight="18.0" prefWidth="150.0" text="Address" />
-      <Button fx:id="signUpButton" layoutX="341.0" layoutY="427.0" mnemonicParsing="false" onAction="#OnSignUP" prefHeight="26.0" prefWidth="76.0" text="Sign UP" />
+      <AnchorPane layoutX="61.0" layoutY="50.0" prefHeight="500.0" prefWidth="300.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+         <children>
+            <Label layoutX="106.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Sign Up" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <TextField fx:id="firstName" layoutX="75.0" layoutY="83.0" promptText="First Name" />
+            <TextField fx:id="lastName" layoutX="75.0" layoutY="127.0" promptText="Last Name" />
+            <TextField fx:id="emailAddress" layoutX="75.0" layoutY="204.0" promptText="E-mail Address" />
+            <TextField fx:id="password" layoutX="75.0" layoutY="243.0" promptText="Password" />
+            <TextField fx:id="userName" layoutX="75.0" layoutY="165.0" promptText="Username" />
+            <TextField fx:id="shipping" layoutX="75.0" layoutY="279.0" promptText="Shipping Address" />
+            <TextField fx:id="phoneNumber" layoutX="75.0" layoutY="316.0" promptText="Phone Number" />
+            <Button fx:id="signUpButton" layoutX="118.0" layoutY="356.0" mnemonicParsing="false" onAction="#signUpOnAction" styleClass="brown-button" stylesheets="@application.css" text="Sign Up" textFill="WHITE" />
+            <Button fx:id="signInButton" layoutX="66.0" layoutY="394.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="167.0" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="Already have an account ?" underline="true" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

@@ -4,13 +4,22 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.SignInController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.SignInController">
    <children>
-      <TextField fx:id="PasswordTextField" layoutX="311.0" layoutY="238.0" prefHeight="26.0" prefWidth="178.0" />
-      <TextField fx:id="userNameTextField" layoutX="311.0" layoutY="168.0" prefHeight="26.0" prefWidth="177.0" />
-      <Button fx:id="SignInButton" layoutX="334.0" layoutY="287.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="26.0" prefWidth="131.0" text="SignIn" />
-      <Label layoutX="311.0" layoutY="149.0" prefHeight="18.0" prefWidth="286.0" text="Username ( E-mail )" />
-      <Label layoutX="311.0" layoutY="220.0" prefHeight="18.0" prefWidth="166.0" text="Password" />
+      <AnchorPane layoutX="291.0" layoutY="183.0" prefHeight="234.0" prefWidth="318.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+         <children>
+            <Label layoutX="114.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Sign In" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="27.0" />
+               </font>
+            </Label>
+            <TextField fx:id="userName" layoutX="84.0" layoutY="94.0" promptText="Username" />
+            <TextField fx:id="password" layoutX="84.0" layoutY="133.0" promptText="Password" />
+            <Button fx:id="signInButton" layoutX="85.0" layoutY="168.0" mnemonicParsing="false" onAction="#SignInOnAction" styleClass="brown-button" stylesheets="@application.css" text="Sign In" textFill="WHITE" />
+            <Button fx:id="SignUpButton" layoutX="173.0" layoutY="170.0" mnemonicParsing="false" onAction="#SignUpOnAction" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="Sign Up" textFill="WHITE" underline="true" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

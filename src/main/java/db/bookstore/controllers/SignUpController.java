@@ -8,22 +8,25 @@ import javafx.scene.control.TextField;
 public class SignUpController {
 
     @FXML
-    private TextField Address;
+    private TextField emailAddress;
 
     @FXML
-    private TextField Fname;
+    private TextField firstName;
 
     @FXML
-    private TextField Lname;
+    private TextField lastName;
 
     @FXML
-    private TextField email;
+    private TextField password;
 
     @FXML
-    private TextField number;
+    private TextField phoneNumber;
 
     @FXML
-    private TextField pass;
+    private TextField shipping;
+
+    @FXML
+    private Button signInButton;
 
     @FXML
     private Button signUpButton;
@@ -32,7 +35,12 @@ public class SignUpController {
     private TextField userName;
 
     @FXML
-    void OnSignUP(ActionEvent event) {
+    void signInOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void signUpOnAction(ActionEvent event) {
 
     }
 

@@ -8,16 +8,24 @@ import javafx.scene.control.TextField;
 public class SignInController {
 
     @FXML
-    private TextField PasswordTextField;
+    private Button SignUpButton;
 
     @FXML
-    private Button SignInButton;
+    private TextField password;
 
     @FXML
-    private TextField userNameTextField;
+    private Button signInButton;
 
     @FXML
-    void signInOnAction(ActionEvent event) {
+    private TextField userName;
+
+    @FXML
+    void SignInOnAction(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SignUpOnAction(ActionEvent event) {
 
     }
 
