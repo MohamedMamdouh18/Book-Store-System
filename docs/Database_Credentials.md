@@ -2,12 +2,27 @@
 ### Manager
 - username: Manager
 - password: 123456789
-- permissions: book, book_author, order, user, sales
+####permissions: 
+- book : SELECT - INSERT - UPDATE - DELETE
+- book_author : SELECT - INSERT - UPDATE - DELETE
+- order : INSERT - UPDATE - DELETE
+- user : UPDATE
+- sale : SELECT - INSERT - UPDATE - DELETE
 
 ### Customer
 - username: Customer
 - password: 123456
-- permissions: book, book_author, user
+####permissions:
+- book : SELECT
+- book_author : SELECT
+- user : UPDATE
+
+
+### Admin
+- username: postgres
+- password: Pl5qqNdiYtZQUQFP
+####permissions:
+- Have All Permissions on All tables
 
 ### Why we do that
 - to ensure that each user can access only his/her granted tables with its granted operations and deny any illegal access using SQL injection.
