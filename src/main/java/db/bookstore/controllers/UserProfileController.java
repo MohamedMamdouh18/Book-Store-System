@@ -39,9 +39,6 @@ public class UserProfileController {
     private Button signOutButton;
 
     @FXML
-    private TextField userName;
-
-    @FXML
     void homeReturningOnAction(ActionEvent event) {
 
     }

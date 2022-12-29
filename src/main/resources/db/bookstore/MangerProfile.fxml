@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.UserProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.MangerProfileController">
    <children>
       <Pane layoutX="1.0" prefHeight="54.0" prefWidth="900.0" styleClass="creamy" stylesheets="@application.css">
          <children>
@@ -33,21 +33,29 @@
             </Button>
          </children>
       </Pane>
-      <AnchorPane layoutX="36.0" layoutY="123.0" prefHeight="354.0" prefWidth="414.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+      <AnchorPane layoutX="36.0" layoutY="123.0" prefHeight="354.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
          <children>
-            <Label layoutX="21.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Change Personal Information" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+            <Label layoutX="89.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="firstName" layoutX="87.0" layoutY="69.0" prefHeight="26.0" prefWidth="240.0" promptText="First Name" />
-            <TextField fx:id="lastName" layoutX="87.0" layoutY="105.0" prefHeight="26.0" prefWidth="240.0" promptText="Last Name" />
-            <TextField fx:id="emailAddress" layoutX="87.0" layoutY="142.0" prefHeight="26.0" prefWidth="240.0" promptText="E-mail Address" />
-            <TextField fx:id="password" layoutX="87.0" layoutY="177.0" prefHeight="26.0" prefWidth="240.0" promptText="Password" />
-            <TextField fx:id="shipping" layoutX="87.0" layoutY="212.0" prefHeight="26.0" prefWidth="240.0" promptText="Shipping Address" />
-            <TextField fx:id="phoneNumber" layoutX="87.0" layoutY="247.0" prefHeight="26.0" prefWidth="240.0" promptText="Phone Number" />
-            <Button fx:id="saveChangesButton" layoutX="159.0" layoutY="284.0" mnemonicParsing="false" onAction="#saveChangesOnAction" prefHeight="30.0" prefWidth="95.0" styleClass="brown-button" stylesheets="@application.css" text="Save Changes" textFill="WHITE" />
+            <Button fx:id="PromoteButton" layoutX="91.0" layoutY="69.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="17.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
+      <Pane fx:id="PromotionPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <TextField fx:id="promotionUserNameTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
+            <Button fx:id="PromotionConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
