@@ -1,9 +1,9 @@
 package Database.DAO;
 
-import java.sql.Connection;
+import Database.DBConnector;
 
-public class CustomerDAO extends DAO{
-    public CustomerDAO(Connection connection) {
-        super(connection);
+public class CustomerDAO extends DAO {
+    public CustomerDAO() {
+        this.connection = DBConnector.getCustomerConnection();
     }
 }

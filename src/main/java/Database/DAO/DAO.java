@@ -10,11 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class DAO {
-    Connection connection;
-
-    public DAO(Connection connection) {
-        this.connection = connection;
-    }
+    protected Connection connection;
 
     public List<Book> searchBookByAttribute(String attribute, String value) throws SQLException {
         Statement stmt = connection.createStatement();
@@ -45,5 +41,4 @@ public abstract class DAO {
                 "set password = '" + newPassword +
                 "' where username = '" + userName + "'; ");
     }
-
 }
