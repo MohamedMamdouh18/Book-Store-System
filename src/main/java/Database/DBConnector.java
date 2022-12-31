@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 public class DBConnector {
     private static Connection customerConnection = null;
     private static Connection managerConnection = null;
+    private static Connection adminConnection = null;
 
     public static Connection getCustomerConnection() {
         if (customerConnection == null)
@@ -19,6 +20,13 @@ public class DBConnector {
             managerConnection = connect_to_db(DBConstants.ManagerUser,
                     DBConstants.ManagerPass);
         return managerConnection;
+    }
+
+    public static Connection getAdminConnection() {
+        if (adminConnection == null)
+            adminConnection = connect_to_db(DBConstants.AdminUser,
+                    DBConstants.AdminPass);
+        return adminConnection;
     }
 
 

@@ -5,7 +5,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
+
 public class SignUpController {
+    @FXML
+    private TextField userName;
+
+    @FXML
+    private TextField password;
 
     @FXML
     private TextField emailAddress;
@@ -16,8 +23,6 @@ public class SignUpController {
     @FXML
     private TextField lastName;
 
-    @FXML
-    private TextField password;
 
     @FXML
     private TextField phoneNumber;
@@ -32,16 +37,13 @@ public class SignUpController {
     private Button signUpButton;
 
     @FXML
-    private TextField userName;
-
-    @FXML
-    void signInOnAction(ActionEvent event) {
-
+    void signInOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.SignIn);
     }
 
     @FXML
-    void signUpOnAction(ActionEvent event) {
-
+    void signUpOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.SignIn);
     }
 
 }

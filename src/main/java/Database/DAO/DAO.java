@@ -48,15 +48,4 @@ public abstract class DAO {
                 "set " + attribute + " = '" + newValue +
                 "' where username = '" + username + "'; ");
     }
-
-    public User signInUser(String username) throws SQLException {
-        Statement stmt = connection.createStatement();
-        ResultSet resultSet = stmt.executeQuery("select *" +
-                " from public.user u " +
-                " where username = '" + username + "'; ");
-        if (!resultSet.isBeforeFirst() )
-            return null;
-        resultSet.next();
-        return new User(resultSet);
-    }
 }

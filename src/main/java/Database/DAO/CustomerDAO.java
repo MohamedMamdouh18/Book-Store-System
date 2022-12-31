@@ -9,7 +9,7 @@ public class CustomerDAO extends DAO {
         this.connection = DBConnector.getCustomerConnection();
     }
 
-    public static CustomerDAO getCustomerDAO() {
+    public static CustomerDAO getInstance() {
         if (customerDAO == null)
             CustomerDAO.customerDAO = new CustomerDAO();
         return CustomerDAO.customerDAO;

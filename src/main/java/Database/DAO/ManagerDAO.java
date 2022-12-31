@@ -13,7 +13,7 @@ public class ManagerDAO extends DAO {
         this.connection = DBConnector.getManagerConnection();
     }
 
-    public static ManagerDAO getManagerDAO() {
+    public static ManagerDAO getInstance() {
         if (managerDAO == null)
             ManagerDAO.managerDAO = new ManagerDAO();
         return ManagerDAO.managerDAO;

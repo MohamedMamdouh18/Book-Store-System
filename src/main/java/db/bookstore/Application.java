@@ -1,5 +1,6 @@
 package db.bookstore;
 
+import db.bookstore.controllers.RoutingHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,7 +18,7 @@ public class Application extends javafx.application.Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("MainView.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(RoutingHandler.MainView));
         Parent root = fxmlLoader.load();
         root.setOnMousePressed(event -> {
             x = event.getSceneX();

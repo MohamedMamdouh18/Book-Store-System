@@ -32,7 +32,8 @@ public class MainController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        this.changeMainView();
+        RoutingHandler.setMainView(this.mainPain);
+        RoutingHandler.changeView(RoutingHandler.SignIn);
     }
 
     @FXML
@@ -40,12 +41,7 @@ public class MainController implements Initializable {
 
     }
 
-    public void changeMainView() throws IOException {
-        if(mainPain.getChildren().size() > 0)
-            mainPain.getChildren().remove(0);
-        Parent root ;
-        FXMLLoader loader = new FXMLLoader(Application.class.getResource("SignIn.fxml"));
-        root = loader.load();
-        mainPain.getChildren().add(root);
+    public void changeMainView(String path) throws IOException {
+
     }
 }

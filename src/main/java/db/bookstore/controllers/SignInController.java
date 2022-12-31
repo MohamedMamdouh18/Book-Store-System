@@ -1,5 +1,6 @@
 package db.bookstore.controllers;
 
+import Database.DAO.AdminDAO;
 import Database.DAO.CustomerDAO;
 import Database.Models.User;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -43,8 +45,8 @@ public class SignInController implements Initializable {
 
     @FXML
     void SignInOnAction(ActionEvent event) throws SQLException {
-        CustomerDAO customerDAO = CustomerDAO.getCustomerDAO();
-        User answer = customerDAO.signInUser(username.getText().trim());
+        AdminDAO adminDAO = AdminDAO.getInstance();
+        User answer = adminDAO.signInUser(username.getText().trim());
         if (answer == null || !Objects.equals(answer.getPassword(), password.getText()))
             wrongCredentials.setVisible(true);
 
@@ -53,8 +55,8 @@ public class SignInController implements Initializable {
     }
 
     @FXML
-    void SignUpOnAction(ActionEvent event) {
-
+    void SignUpOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.SignUp);
     }
 
 }
