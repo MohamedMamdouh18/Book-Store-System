@@ -5,9 +5,7 @@ import Database.Models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -19,7 +17,10 @@ public class SignUpController implements Initializable {
     private TextField userName;
 
     @FXML
-    private TextField password;
+    private PasswordField passwordHidden;
+
+    @FXML
+    private TextField passwordVisible;
 
     @FXML
     private TextField emailAddress;
@@ -45,6 +46,9 @@ public class SignUpController implements Initializable {
     @FXML
     private Label userExists;
 
+    @FXML
+    private CheckBox checkBox;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userExists.setVisible(false);
@@ -64,7 +68,7 @@ public class SignUpController implements Initializable {
                 .email_address(emailAddress.getText().trim())
                 .first_name(firstName.getText().trim())
                 .last_name(lastName.getText().trim())
-                .password(password.getText())
+                .password(passwordHidden.getText())
                 .phone_number(phoneNumber.getText().trim())
                 .role("customer").build();
 
@@ -74,6 +78,19 @@ public class SignUpController implements Initializable {
             adminDAO.signUpUser(user);
             RoutingHandler.changeView(RoutingHandler.SignIn);
         }
+    }
+
+    @FXML
+    void checkBoxOnAction(ActionEvent event) {
+        if (checkBox.isSelected()){
+            passwordVisible.setText(passwordHidden.getText());
+            passwordVisible.setVisible(true);
+            passwordHidden.setVisible(false);
+            return;
+        }
+        passwordHidden.setText(passwordVisible.getText());
+        passwordHidden.setVisible(true);
+        passwordVisible.setVisible(false);
     }
 
 }

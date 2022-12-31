@@ -1,15 +1,11 @@
 package db.bookstore.controllers;
 
 import Database.DAO.AdminDAO;
-import Database.DAO.CustomerDAO;
 import Database.Models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -33,10 +29,16 @@ public class SignInController implements Initializable {
     private Label wrongCredentials;
 
     @FXML
-    private PasswordField password;
+    private TextField passwordVisible;
+
+    @FXML
+    private PasswordField passwordHidden;
 
     @FXML
     private TextField username;
+
+    @FXML
+    private CheckBox checkBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,7 +49,7 @@ public class SignInController implements Initializable {
     void SignInOnAction(ActionEvent event) throws SQLException {
         AdminDAO adminDAO = AdminDAO.getInstance();
         User answer = adminDAO.signInUser(username.getText().trim());
-        if (answer == null || !Objects.equals(answer.getPassword(), password.getText()))
+        if (answer == null || !Objects.equals(answer.getPassword(), passwordHidden.getText()))
             wrongCredentials.setVisible(true);
 
         else
@@ -57,5 +59,18 @@ public class SignInController implements Initializable {
     @FXML
     void SignUpOnAction(ActionEvent event) throws IOException {
         RoutingHandler.changeView(RoutingHandler.SignUp);
+    }
+
+    @FXML
+    void checkBoxOnAction(ActionEvent event) {
+        if (checkBox.isSelected()){
+            passwordVisible.setText(passwordHidden.getText());
+            passwordVisible.setVisible(true);
+            passwordHidden.setVisible(false);
+            return;
+        }
+        passwordHidden.setText(passwordVisible.getText());
+        passwordHidden.setVisible(true);
+        passwordVisible.setVisible(false);
     }
 }
