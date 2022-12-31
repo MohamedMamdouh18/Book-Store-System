@@ -64,7 +64,7 @@ public class SignUpController implements Initializable {
                 .email_address(emailAddress.getText().trim())
                 .first_name(firstName.getText().trim())
                 .last_name(lastName.getText().trim())
-                .password(password.getText().trim())
+                .password(password.getText())
                 .phone_number(phoneNumber.getText().trim())
                 .role("customer").build();
 
