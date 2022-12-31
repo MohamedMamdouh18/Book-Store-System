@@ -3,7 +3,15 @@ package Database.DAO;
 import Database.DBConnector;
 
 public class CustomerDAO extends DAO {
-    public CustomerDAO() {
+    private static CustomerDAO customerDAO = null;
+
+    private CustomerDAO() {
         this.connection = DBConnector.getCustomerConnection();
+    }
+
+    public static CustomerDAO getCustomerDAO() {
+        if (customerDAO == null)
+            CustomerDAO.customerDAO = new CustomerDAO();
+        return CustomerDAO.customerDAO;
     }
 }

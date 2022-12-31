@@ -7,8 +7,16 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ManagerDAO extends DAO {
-    public ManagerDAO() {
+    private static ManagerDAO managerDAO = null;
+
+    private ManagerDAO() {
         this.connection = DBConnector.getManagerConnection();
+    }
+
+    public static ManagerDAO getManagerDAO() {
+        if (managerDAO == null)
+            ManagerDAO.managerDAO = new ManagerDAO();
+        return ManagerDAO.managerDAO;
     }
 
     public void addBook(Book book) throws SQLException {

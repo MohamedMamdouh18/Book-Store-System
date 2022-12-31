@@ -9,18 +9,20 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class Application extends javafx.application.Application {
-    double x = 0 , y = 0;
+    double x = 0, y = 0;
+
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("MangerProfile.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("MainView.fxml"));
         Parent root = fxmlLoader.load();
-
-
         root.setOnMousePressed(event -> {
             x = event.getSceneX();
             y = event.getSceneY();
         });
-
         //to make the app move on dragging by mouse
         root.setOnMouseDragged(event -> {
             stage.setX(event.getScreenX() - x);
@@ -31,9 +33,5 @@ public class Application extends javafx.application.Application {
         stage.setTitle("Wezza w Do7a w Mo2");
         stage.setScene(scene);
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

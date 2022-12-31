@@ -1,6 +1,7 @@
 package Database.DAO;
 
 import Database.Models.Book;
+import Database.Models.User;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -17,6 +18,8 @@ public abstract class DAO {
         ResultSet rs = stmt.executeQuery("select * " +
                 "from public.book where " + attribute + " = '" + value + "';");
 
+        if (!rs.isBeforeFirst() )
+            return null;
         List<Book> books = new ArrayList<>();
         while (rs.next())
             books.add(new Book(rs));
@@ -29,18 +32,31 @@ public abstract class DAO {
                 "from public.book b join public.book_author r on b.isbn = r.book_isbn " +
                 "where r.author_name like '%" + name + "%';");
 
+        if (!rs.isBeforeFirst() )
+            return null;
         List<Book> books = new ArrayList<>();
         while (rs.next())
             books.add(new Book(rs));
         return books;
     }
 
-    public void changeUserProfile(String userName, String attribute, String newValue) throws SQLException {
+    public void changeUserProfile(String username, String attribute, String newValue) throws SQLException {
         if (attribute.toLowerCase().equals("role") || attribute.toLowerCase().equals("username"))
             return;
         Statement stmt = connection.createStatement();
         stmt.executeUpdate("update public.user u " +
                 "set " + attribute + " = '" + newValue +
-                "' where username = '" + userName + "'; ");
+                "' where username = '" + username + "'; ");
+    }
+
+    public User signInUser(String username) throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet resultSet = stmt.executeQuery("select *" +
+                " from public.user u " +
+                " where username = '" + username + "'; ");
+        if (!resultSet.isBeforeFirst() )
+            return null;
+        resultSet.next();
+        return new User(resultSet);
     }
 }

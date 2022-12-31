@@ -12,14 +12,14 @@ import java.sql.SQLException;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Book {
-    public String isbn;
-    public String title;
-    public Date publication_year;
-    public Float price;
-    public String category;
-    public int minimum_stock;
-    public int stock;
-    public String publisher_name;
+    private String isbn;
+    private String title;
+    private Date publication_year;
+    private Float price;
+    private String category;
+    private int minimum_stock;
+    private int stock;
+    private String publisher_name;
 
     public Book(ResultSet set) throws SQLException {
         this.isbn = set.getString(1);
