@@ -17,10 +17,10 @@
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <TextField fx:id="firstName" layoutX="75.0" layoutY="83.0" promptText="First Name" />
-            <TextField fx:id="lastName" layoutX="75.0" layoutY="127.0" promptText="Last Name" />
+            <TextField fx:id="userName" layoutX="75.0" layoutY="84.0" promptText="Username" />
+            <TextField fx:id="lastName" layoutX="75.0" layoutY="124.0" promptText="Last Name" />
+            <TextField fx:id="firstName" layoutX="75.0" layoutY="165.0" promptText="First Name" />
             <TextField fx:id="emailAddress" layoutX="75.0" layoutY="204.0" promptText="E-mail Address" />
-            <TextField fx:id="userName" layoutX="75.0" layoutY="165.0" promptText="Username" />
             <TextField fx:id="shipping" layoutX="75.0" layoutY="279.0" promptText="Shipping Address" />
             <TextField fx:id="phoneNumber" layoutX="75.0" layoutY="316.0" promptText="Phone Number" />
             <Button fx:id="signUpButton" layoutX="118.0" layoutY="356.0" mnemonicParsing="false" onAction="#signUpOnAction" styleClass="brown-button" stylesheets="@application.css" text="Sign Up" textFill="WHITE">
@@ -31,7 +31,12 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <PasswordField layoutX="76.0" layoutY="244.0" promptText="Password" />
+            <PasswordField fx:id="password" cache="true" layoutX="76.0" layoutY="244.0" promptText="Password" />
+            <Label fx:id="userExists" alignment="CENTER" layoutX="76.0" layoutY="429.0" prefHeight="39.0" prefWidth="149.0" text="User Already Exists" textFill="#d02626">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

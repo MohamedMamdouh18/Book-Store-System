@@ -58,5 +58,4 @@ public class SignInController implements Initializable {
     void SignUpOnAction(ActionEvent event) throws IOException {
         RoutingHandler.changeView(RoutingHandler.SignUp);
     }
-
 }

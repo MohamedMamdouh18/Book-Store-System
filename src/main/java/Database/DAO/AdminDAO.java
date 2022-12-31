@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class AdminDAO extends DAO{
+public class AdminDAO extends DAO {
     private static AdminDAO adminDAO = null;
 
     private AdminDAO() {
@@ -25,9 +25,15 @@ public class AdminDAO extends DAO{
         ResultSet resultSet = stmt.executeQuery("select *" +
                 " from public.user u " +
                 " where username = '" + username + "'; ");
-        if (!resultSet.isBeforeFirst() )
+        if (!resultSet.isBeforeFirst())
             return null;
         resultSet.next();
         return new User(resultSet);
+    }
+
+    public void signUpUser(User user) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute("insert into public.user " +
+                "values" + user.toString() + ";");
     }
 }
