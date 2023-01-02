@@ -46,14 +46,17 @@ public class SignInController implements Initializable {
     }
 
     @FXML
-    void SignInOnAction(ActionEvent event) throws SQLException {
+    void SignInOnAction(ActionEvent event) throws SQLException, IOException {
         AdminDAO adminDAO = AdminDAO.getInstance();
         User answer = adminDAO.signInUser(username.getText().trim());
-        if (answer == null || !Objects.equals(answer.getPassword(), passwordHidden.getText()))
+        if (answer == null || !Objects.equals(answer.getPassword(), (checkBox.isSelected()) ? passwordVisible.getText() : passwordHidden.getText()))
             wrongCredentials.setVisible(true);
 
-        else
-            System.out.println("go in");
+        else{
+            RoutingHandler.changeView(RoutingHandler.Home);
+            RoutingHandler.setCurrentUser(answer);
+            RoutingHandler.notifySigning();
+        }
     }
 
     @FXML
@@ -63,7 +66,7 @@ public class SignInController implements Initializable {
 
     @FXML
     void checkBoxOnAction(ActionEvent event) {
-        if (checkBox.isSelected()){
+        if (checkBox.isSelected()) {
             passwordVisible.setText(passwordHidden.getText());
             passwordVisible.setVisible(true);
             passwordHidden.setVisible(false);

@@ -1,14 +1,13 @@
 package db.bookstore.controllers;
 
-import db.bookstore.Application;
+import Database.Models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import lombok.SneakyThrows;
 
 import java.io.IOException;
@@ -21,27 +20,46 @@ public class MainController implements Initializable {
     private Label firstNameWelcomeLabel;
 
     @FXML
-    private Button homeReturningButton;
-
-    @FXML
     private AnchorPane mainPain;
 
     @FXML
-    private Button signOutButton;
+    private Pane pagesPane;
+
+    @FXML
+    private Button managerButton;
 
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        RoutingHandler.setMainView(this.mainPain);
+        pagesPane.setVisible(false);
+        RoutingHandler.setMainView(this.mainPain, this);
+        RoutingHandler.changeView(RoutingHandler.SignIn);
+    }
+
+    void notifyBar(User currentUser) {
+        pagesPane.setVisible(!pagesPane.isVisible());
+        firstNameWelcomeLabel.setText("Hello, " + currentUser.getFirst_name());
+        managerButton.setVisible(currentUser.getRole().equalsIgnoreCase("manager"));
+    }
+
+    @FXML
+    void homeReturningOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.Home);
+    }
+
+    @FXML
+    void signOutOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.notifySigning();
         RoutingHandler.changeView(RoutingHandler.SignIn);
     }
 
     @FXML
-    void homeReturningOnAction(ActionEvent event) {
-
+    void profileOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.UserProfile);
     }
 
-    public void changeMainView(String path) throws IOException {
-
+    @FXML
+    void managerActionOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.ManagerProfile);
     }
 }

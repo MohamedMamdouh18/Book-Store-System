@@ -68,7 +68,7 @@ public class SignUpController implements Initializable {
                 .email_address(emailAddress.getText().trim())
                 .first_name(firstName.getText().trim())
                 .last_name(lastName.getText().trim())
-                .password(passwordHidden.getText())
+                .password((checkBox.isSelected()) ? passwordVisible.getText() : passwordHidden.getText())
                 .phone_number(phoneNumber.getText().trim())
                 .role("customer").build();
 
@@ -82,7 +82,7 @@ public class SignUpController implements Initializable {
 
     @FXML
     void checkBoxOnAction(ActionEvent event) {
-        if (checkBox.isSelected()){
+        if (checkBox.isSelected()) {
             passwordVisible.setText(passwordHidden.getText());
             passwordVisible.setVisible(true);
             passwordHidden.setVisible(false);
