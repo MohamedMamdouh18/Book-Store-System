@@ -21,7 +21,7 @@
             <TableColumn fx:id="quantity" prefWidth="72.0" text="Quantity" />
          </columns>
       </TableView>
-      <Pane fx:id="creditPane" layoutX="120.0" layoutY="61.0" prefHeight="174.0" prefWidth="318.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css">
+      <Pane fx:id="creditPane" layoutX="120.0" layoutY="69.0" prefHeight="174.0" prefWidth="318.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css">
          <children>
             <TextField fx:id="creditCardHolderTextField" layoutX="70.0" layoutY="14.0" prefHeight="25.0" prefWidth="175.0" promptText="Credit Card Holder" />
             <TextField fx:id="idTextField" layoutX="70.0" layoutY="39.0" prefHeight="25.0" prefWidth="175.0" promptText="ID" />
