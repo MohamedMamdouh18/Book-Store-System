@@ -1,6 +1,7 @@
 package db.bookstore.controllers;
 
 import Database.Models.User;
+import db.bookstore.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -36,10 +37,10 @@ public class MainController implements Initializable {
         RoutingHandler.changeView(RoutingHandler.SignIn);
     }
 
-    void notifyBar(User currentUser) {
+    void notifyBar() {
         pagesPane.setVisible(!pagesPane.isVisible());
-        firstNameWelcomeLabel.setText("Hello, " + currentUser.getFirst_name());
-        managerButton.setVisible(currentUser.getRole().equalsIgnoreCase("manager"));
+        firstNameWelcomeLabel.setText("Hello, " + UserInfo.currentUser.getFirst_name());
+        managerButton.setVisible(UserInfo.currentUser.getRole().equalsIgnoreCase("manager"));
     }
 
     @FXML

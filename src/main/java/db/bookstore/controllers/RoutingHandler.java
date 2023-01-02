@@ -17,7 +17,6 @@ public class RoutingHandler {
     public final static String Home = "HomeView.fxml";
     private static AnchorPane mainView = null;
     private static MainController mainController = null;
-    private static User currentUser;
 
     public static void changeView(String next) throws IOException {
         if (mainView.getChildren().size() > 0)
@@ -35,11 +34,7 @@ public class RoutingHandler {
         RoutingHandler.mainController = mainController;
     }
 
-    public static void setCurrentUser(User currentUser) {
-        RoutingHandler.currentUser = currentUser;
-    }
-
     public static void notifySigning() {
-        RoutingHandler.mainController.notifyBar(currentUser);
+        RoutingHandler.mainController.notifyBar();
     }
 }

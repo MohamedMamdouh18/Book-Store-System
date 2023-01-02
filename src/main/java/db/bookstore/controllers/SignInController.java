@@ -2,6 +2,7 @@ package db.bookstore.controllers;
 
 import Database.DAO.AdminDAO;
 import Database.Models.User;
+import db.bookstore.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -46,7 +47,7 @@ public class SignInController implements Initializable {
             wrongCredentials.setVisible(true);
         else {
             RoutingHandler.changeView(RoutingHandler.Home);
-            RoutingHandler.setCurrentUser(answer);
+            UserInfo.currentUser = answer;
             RoutingHandler.notifySigning();
         }
     }
