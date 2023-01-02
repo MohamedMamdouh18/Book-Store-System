@@ -17,8 +17,8 @@ public class Book {
     private Date publication_year;
     private Float price;
     private String category;
-    private int minimum_stock;
-    private int stock;
+    private Integer minimum_stock;
+    private Integer stock;
     private String publisher_name;
 
     public Book(ResultSet set) throws SQLException {

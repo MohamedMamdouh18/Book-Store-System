@@ -17,4 +17,5 @@ module db.bookstore {
     exports db.bookstore;
     exports db.bookstore.controllers;
     opens db.bookstore.controllers to javafx.fxml;
+    exports Database.Models;
 }
