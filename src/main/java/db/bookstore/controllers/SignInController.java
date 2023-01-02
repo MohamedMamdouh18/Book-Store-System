@@ -5,8 +5,10 @@ import Database.Models.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
@@ -15,15 +17,6 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class SignInController implements Initializable {
-
-    @FXML
-    private AnchorPane mainView;
-
-    @FXML
-    private Button signUpButton;
-
-    @FXML
-    private Button signInButton;
 
     @FXML
     private Label wrongCredentials;
@@ -51,8 +44,7 @@ public class SignInController implements Initializable {
         User answer = adminDAO.signInUser(username.getText().trim());
         if (answer == null || !Objects.equals(answer.getPassword(), (checkBox.isSelected()) ? passwordVisible.getText() : passwordHidden.getText()))
             wrongCredentials.setVisible(true);
-
-        else{
+        else {
             RoutingHandler.changeView(RoutingHandler.Home);
             RoutingHandler.setCurrentUser(answer);
             RoutingHandler.notifySigning();
