@@ -63,4 +63,9 @@ public class MainController implements Initializable {
     void managerActionOnAction(ActionEvent event) throws IOException {
         RoutingHandler.changeView(RoutingHandler.ManagerProfile);
     }
+
+    @FXML
+    void cartOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.Cart);
+    }
 }

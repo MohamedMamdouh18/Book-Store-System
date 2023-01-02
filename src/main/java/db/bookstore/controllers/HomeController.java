@@ -4,7 +4,6 @@ import Database.DAO.CustomerDAO;
 import Database.Models.Book;
 import db.bookstore.UserInfo;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,19 +11,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class HomeController implements Initializable {
-    ObservableList<Book> books = FXCollections.observableArrayList(
-            new Book("1", "1", Date.valueOf("2202-1-1"), (float) 10.00, "Horror", 10, 200, "khaled"),
-            new Book("2", "2", Date.valueOf("2111-1-1"), (float) 30.00, "Comedy", 22, 444, "ali")
-    );
+    private final HashMap<String, String> comboBoxSelection = new HashMap<>();
     @FXML
     private TableView<Book> bookTable;
     @FXML
@@ -64,6 +62,7 @@ public class HomeController implements Initializable {
     @FXML
     private AnchorPane bookDetails;
 
+    @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
@@ -75,15 +74,25 @@ public class HomeController implements Initializable {
         publisher.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher_name"));
 
         searchAttribute.setItems(FXCollections.observableArrayList("ISBN", "Title", "Publication Year", "Price", "Category", "Stock", "Publisher"));
+        comboBoxSelection.put("ISBN", "isbn");
+        comboBoxSelection.put("Title", "title");
+        comboBoxSelection.put("Publication Year", "publication_year");
+        comboBoxSelection.put("Price", "price");
+        comboBoxSelection.put("Category", "category");
+        comboBoxSelection.put("Stock", "stock");
+        comboBoxSelection.put("Publisher", "publisher_name");
 
-        bookTable.setItems(books);
+        List<Book> books = CustomerDAO.getInstance().getBooks();
+        bookTable.setItems(FXCollections.observableArrayList(books));
         bookDetails.setVisible(false);
     }
 
     @FXML
-    void searchOnAction(ActionEvent event) throws IOException {
-        Book book = bookTable.getSelectionModel().getSelectedItem();
-        System.out.println(book.toString());
+    void searchOnAction(ActionEvent event) throws IOException, SQLException {
+        String attribute = comboBoxSelection.get(searchAttribute.getValue());
+        String value = searchValue.getText();
+        List<Book> ans = CustomerDAO.getInstance().searchBookByAttribute(attribute, value);
+        bookTable.setItems(FXCollections.observableArrayList(ans));
     }
 
     @FXML

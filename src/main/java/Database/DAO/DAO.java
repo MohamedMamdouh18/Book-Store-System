@@ -13,6 +13,19 @@ import java.util.List;
 public abstract class DAO {
     protected Connection connection;
 
+    public List<Book> getBooks() throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select * " +
+                "from public.book limit 50;");
+
+        if (!rs.isBeforeFirst() )
+            return new ArrayList<>();
+        List<Book> books = new ArrayList<>();
+        while (rs.next())
+            books.add(new Book(rs));
+        return books;
+    }
+
     public List<Book> searchBookByAttribute(String attribute, String value) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * " +

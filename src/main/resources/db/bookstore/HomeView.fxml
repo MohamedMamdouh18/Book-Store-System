@@ -24,7 +24,7 @@
         </columns>
       </TableView>
       <TextField fx:id="searchValue" layoutX="179.0" layoutY="124.0" prefHeight="38.0" prefWidth="246.0" styleClass="creamy-text-field" />
-      <ComboBox fx:id="searchAttribute" layoutX="14.0" layoutY="124.0" prefHeight="38.0" prefWidth="140.0" styleClass="creamy-card" />
+      <ComboBox fx:id="searchAttribute" layoutX="14.0" layoutY="124.0" prefHeight="38.0" prefWidth="140.0" promptText="Attribute" styleClass="creamy-card" />
       <Button layoutX="437.0" layoutY="124.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="38.0" prefWidth="122.0" styleClass="brown-button" text="Search" textFill="WHITE">
          <font>
             <Font size="18.0" />
@@ -34,7 +34,7 @@
          </cursor></Button>
       <AnchorPane fx:id="bookDetails" layoutX="582.0" layoutY="124.0" prefHeight="479.0" prefWidth="319.0" styleClass="creamy-card">
          <children>
-            <Label fx:id="bookTitle" alignment="CENTER" layoutX="112.0" layoutY="14.0" prefHeight="38.0" prefWidth="96.0" text="Label">
+            <Label fx:id="bookTitle" alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="38.0" prefWidth="284.0" text="Label">
                <font>
                   <Font name="System Bold" size="22.0" />
                </font>
@@ -109,7 +109,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="addCart" layoutX="99.0" layoutY="403.0" mnemonicParsing="false" onAction="#searchOnAction" prefHeight="38.0" prefWidth="122.0" styleClass="brown-button" text="Add to cart" textFill="WHITE">
+            <Button fx:id="addCart" layoutX="99.0" layoutY="403.0" mnemonicParsing="false" onAction="#addCartOnAction" prefHeight="38.0" prefWidth="122.0" styleClass="brown-button" text="Add to cart" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>

@@ -14,6 +14,7 @@ import javafx.scene.control.TextField;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -48,6 +49,7 @@ public class SignInController implements Initializable {
         else {
             RoutingHandler.changeView(RoutingHandler.Home);
             UserInfo.currentUser = answer;
+            UserInfo.userCart = new ArrayList<>();
             RoutingHandler.notifySigning();
         }
     }

@@ -41,7 +41,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="613.0" layoutY="12.0" mnemonicParsing="false" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="My Cart" underline="true">
+            <Button layoutX="613.0" layoutY="12.0" mnemonicParsing="false" onAction="#cartOnAction" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="My Cart" underline="true">
                <font>
                   <Font size="14.0" />
                </font>

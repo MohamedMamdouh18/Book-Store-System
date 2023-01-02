@@ -1,6 +1,5 @@
 package db.bookstore.controllers;
 
-import Database.Models.User;
 import db.bookstore.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +14,7 @@ public class RoutingHandler {
     public final static String UserProfile = "UserProfile.fxml";
     public final static String ManagerProfile = "ManagerProfile.fxml";
     public final static String Home = "HomeView.fxml";
+    public final static String Cart = "Cart.fxml";
     private static AnchorPane mainView = null;
     private static MainController mainController = null;
 
