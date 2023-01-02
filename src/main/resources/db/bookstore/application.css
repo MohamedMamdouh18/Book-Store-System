@@ -53,6 +53,10 @@
     -fx-border-color: #6e4325;
     -fx-border-radius: 25;
 }
+.creamy-table{
+    -fx-background-color: rgba(248, 240, 227, 0.94);
+    -fx-border-color: #6e4325;
+}
 .text-field:disabled, .text-field:disabled > * {
     -fx-opacity: 1.0 ;
 }
