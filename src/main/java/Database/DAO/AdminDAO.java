@@ -11,7 +11,7 @@ public class AdminDAO extends DAO {
     private static AdminDAO adminDAO = null;
 
     private AdminDAO() {
-        this.connection = DBConnector.getCustomerConnection();
+        this.connection = DBConnector.getAdminConnection();
     }
 
     public static AdminDAO getInstance() {

@@ -19,7 +19,7 @@ public abstract class DAO {
                 "from public.book where " + attribute + " = '" + value + "';");
 
         if (!rs.isBeforeFirst() )
-            return null;
+            return new ArrayList<>();
         List<Book> books = new ArrayList<>();
         while (rs.next())
             books.add(new Book(rs));
@@ -33,7 +33,7 @@ public abstract class DAO {
                 "where r.author_name like '%" + name + "%';");
 
         if (!rs.isBeforeFirst() )
-            return null;
+            return new ArrayList<>();
         List<Book> books = new ArrayList<>();
         while (rs.next())
             books.add(new Book(rs));
