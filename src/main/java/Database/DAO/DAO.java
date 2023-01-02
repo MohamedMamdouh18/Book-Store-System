@@ -26,18 +26,18 @@ public abstract class DAO {
         return books;
     }
 
-    public List<Book> searchBookByAuthor(String name) throws SQLException {
+    public List<String> searchBookAuthors(String isbn) throws SQLException {
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select * " +
+        ResultSet rs = stmt.executeQuery("select r.author_name " +
                 "from public.book b join public.book_author r on b.isbn = r.book_isbn " +
-                "where r.author_name like '%" + name + "%';");
+                "where r.book_isbn = '" + isbn + "';");
 
         if (!rs.isBeforeFirst() )
             return new ArrayList<>();
-        List<Book> books = new ArrayList<>();
+        List<String> authors = new ArrayList<>();
         while (rs.next())
-            books.add(new Book(rs));
-        return books;
+            authors.add(rs.getString(1));
+        return authors;
     }
 
     public void changeUserProfile(String username, String attribute, String newValue) throws SQLException {
