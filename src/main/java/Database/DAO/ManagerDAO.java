@@ -56,19 +56,16 @@ public class ManagerDAO extends DAO {
                     "values" + "('" + isbn + "', '" + author + "')" + ";");
         }
     }
-    //TODO:Place order
     public void placeOrder(Order order) throws SQLException {
         Statement stmt = connection.createStatement();
         stmt.execute("insert into public.order " +
                         "values" + order.toString() + ";");
     }
-    //TODO:Confirm Order
     public void confirmOrder(Order order) throws SQLException {
         Statement stmt = connection.createStatement();
         stmt.execute("delete from public.order " +
                 " where book_isbn = '" + order.getBook_isbn() + "' and username = '" + order.getUsername() + "'; ");
     }
-    //TODO: Report total sales for all books in the previous month
     public ArrayList<Sale> reportLastMonthSales() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<Sale> sales = new ArrayList<>();
@@ -79,7 +76,6 @@ public class ManagerDAO extends DAO {
             sales.add(new Sale(rs));
         return sales;
     }
-    //TODO: Report top 10 books on selling for the last three months
     public ArrayList<Book> reportTopTenBooks() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<Book> books = new ArrayList<>();
@@ -92,7 +88,6 @@ public class ManagerDAO extends DAO {
             books.add(new Book(rs));
         return books;
     }
-    //TODO: Report top 5 customers with the most purchase amount for the last three months
     public ArrayList<User> reportTopFiveCustomers() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<User> users = new ArrayList<>();
