@@ -4,6 +4,7 @@ import Database.DBConnector;
 import Database.Models.Book;
 import Database.Models.Order;
 import Database.Models.Sale;
+import Database.Models.User;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -33,7 +34,7 @@ public class ManagerDAO extends DAO {
                 "values" + book.toString() + ";");
     }
 
-    public void promoteCutomer(String userName) throws SQLException {
+    public void promoteCustomer(String userName) throws SQLException {
         Statement stmt = connection.createStatement();
         stmt.executeUpdate("update public.user u " +
                 "set role = 'Manager' " +
@@ -82,7 +83,7 @@ public class ManagerDAO extends DAO {
     public ArrayList<Book> reportTopTenBooks() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<Book> books = new ArrayList<>();
-        ResultSet rs = stmt.executeQuery("select isbn, title, publication_year, price, category, minimum_stock, stock, publisher_name" +
+        ResultSet rs = stmt.executeQuery("select distinct isbn, title, publication_year, price, category, minimum_stock, stock, publisher_name" +
                                             " from public.sale s, public.book b where s.book_isbn = b.isbn and sale_date > '"
                                             + Date.valueOf(LocalDate.now().minusMonths(3)) + "' order by count desc limit 10; ");
         if (!rs.isBeforeFirst() )
@@ -90,6 +91,19 @@ public class ManagerDAO extends DAO {
         while (rs.next())
             books.add(new Book(rs));
         return books;
+    }
+    //TODO: Report top 5 customers with the most purchase amount for the last three months
+    public ArrayList<User> reportTopFiveCustomers() throws SQLException {
+        Statement stmt = connection.createStatement();
+        ArrayList<User> users = new ArrayList<>();
+        ResultSet rs = stmt.executeQuery("select distinct username, password, email_address, first_name, last_name, phone_number, address, role" +
+                                            " from public.sale s, public.user u where s.username = u.username and sale_date > '"
+                                            + Date.valueOf(LocalDate.now().minusMonths(3)) + "' group by username order by sum(count) desc limit 5; ");
+        if (!rs.isBeforeFirst() )
+            return new ArrayList<>();
+        while (rs.next())
+            users.add(new User(rs));
+        return users;
     }
 
 }
