@@ -18,7 +18,6 @@ public class UserCart {
     public boolean addBook(Book book) {
         String isbn = book.getIsbn();
 
-        bookData.put(isbn, book);
         if (inCart.containsKey(isbn)) {
             if (Objects.equals(inCart.get(isbn), inStock.get(isbn)))
                 return false;
@@ -26,11 +25,29 @@ public class UserCart {
         } else {
             inCart.put(isbn, 1);
             inStock.put(isbn, book.getStock());
+            bookData.put(isbn, book);
         }
-        System.out.println(inCart.get(isbn));
         return true;
     }
 
+    public void removeBook(Book book) {
+        String isbn = book.getIsbn();
+        int cart = inCart.get(isbn);
+        if (cart == 1) {
+            inCart.remove(isbn);
+            inStock.remove(isbn);
+            bookData.remove(isbn);
+        } else
+            inCart.put(isbn, cart - 1);
+    }
+
+    public Float getCartPrice() {
+        float total = 0;
+        for (Book book : bookData.values()) {
+            total += (inCart.get(book.getIsbn())) * book.getPrice();
+        }
+        return total;
+    }
 
     public List<Book> getCartList() {
         List<Book> cartBooks = new ArrayList<>();
@@ -39,5 +56,11 @@ public class UserCart {
             cartBooks.add(book);
         }
         return cartBooks;
+    }
+
+    public void emptyCart() {
+        inCart = new HashMap<>();
+        inStock = new HashMap<>();
+        bookData = new HashMap<>();
     }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -13,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.CartController">
    <children>
-      <TableView fx:id="bookTable" layoutY="250.0" onMouseClicked="#tableSelectBook" prefHeight="351.0" prefWidth="558.0" styleClass="creamy-table">
+      <TableView fx:id="bookTable" layoutY="265.0" onMouseClicked="#tableSelectBook" prefHeight="336.0" prefWidth="558.0" styleClass="creamy-table">
          <columns>
             <TableColumn fx:id="isbn" prefWidth="75.0" text="ISBN" />
             <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
@@ -24,18 +25,40 @@
             <TableColumn fx:id="quantity" prefWidth="72.0" text="Quantity" />
          </columns>
       </TableView>
-      <Pane fx:id="creditPane" layoutX="120.0" layoutY="69.0" prefHeight="174.0" prefWidth="318.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css">
+      <Pane fx:id="creditPane" layoutX="91.0" layoutY="75.0" prefHeight="197.0" prefWidth="359.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" AnchorPane.topAnchor="60.0">
          <children>
-            <TextField fx:id="creditCardHolderTextField" layoutX="70.0" layoutY="14.0" prefHeight="25.0" prefWidth="175.0" promptText="Credit Card Holder" />
-            <TextField fx:id="idTextField" layoutX="70.0" layoutY="39.0" prefHeight="25.0" prefWidth="175.0" promptText="ID" />
-            <TextField fx:id="cvvTextField" layoutX="70.0" layoutY="64.0" prefHeight="25.0" prefWidth="175.0" promptText="CVV" />
-            <DatePicker fx:id="expiryDateTextField" layoutX="71.0" layoutY="89.0" promptText="Expiry Date" />
-            <Button fx:id="creditConfirmButton" layoutX="70.0" layoutY="121.0" mnemonicParsing="false" onAction="#creditConfirmButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm Card" textFill="WHITE">
+            <TextField fx:id="creditCardHolderTextField" layoutX="73.0" layoutY="14.0" prefHeight="25.0" prefWidth="214.0" promptText="Credit Card Holder" />
+            <TextField fx:id="idTextField" layoutX="73.0" layoutY="39.0" prefHeight="25.0" prefWidth="214.0" promptText="ID" />
+            <TextField fx:id="cvvTextField" layoutX="73.0" layoutY="64.0" prefHeight="25.0" prefWidth="214.0" promptText="CVV" />
+            <DatePicker fx:id="expiryDateTextField" layoutX="73.0" layoutY="89.0" prefHeight="25.0" prefWidth="214.0" promptText="Expiry Date" />
+            <Button fx:id="confirmOrderButton" layoutX="55.0" layoutY="126.0" mnemonicParsing="false" onAction="#confirmOrderOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Button fx:id="cancelButton" layoutX="166.0" layoutY="121.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="30.0" prefWidth="96.0" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="Cancel" textFill="WHITE" underline="true" />
+            <Label layoutX="170.0" layoutY="127.0" text="Total Price:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalPrice" layoutX="273.0" layoutY="127.0" text="Label">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="successfulPurchase" alignment="CENTER" layoutX="63.0" layoutY="161.0" prefHeight="29.0" prefWidth="214.0" text="Successful Purchase" textFill="#00d01f">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="wrongCard" alignment="CENTER" layoutX="63.0" layoutY="161.0" prefHeight="29.0" prefWidth="214.0" text="Wrong Card Data" textFill="#cf0000">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <AnchorPane fx:id="bookDetails" layoutX="581.0" layoutY="121.0" prefHeight="479.0" prefWidth="319.0" styleClass="creamy-card">
@@ -129,8 +152,19 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button layoutX="104.0" layoutY="389.0" mnemonicParsing="false" onAction="#addBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="+" />
-            <Button layoutX="176.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="-" />
+            <Button layoutX="104.0" layoutY="389.0" mnemonicParsing="false" onAction="#addBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="+">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutX="176.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="-">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Label fx:id="cartRemove" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="431.0" prefHeight="43.0" prefWidth="284.0" text="Removed Successfully" textFill="#2bff00">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
