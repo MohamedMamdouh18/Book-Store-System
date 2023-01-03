@@ -2,6 +2,8 @@ package db.bookstore.controllers;
 
 import Database.DAO.ManagerDAO;
 import Database.Models.Book;
+import Database.Models.Order;
+import db.bookstore.UserInfo;
 import db.bookstore.Utils.Helpers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +22,7 @@ import java.util.List;
 
 public class ManagerProfileController {
 
+
     @FXML
     private Button PromoteButton;
 
@@ -36,15 +39,23 @@ public class ManagerProfileController {
     @FXML
     private Pane ModifyBookPane;
 
-
     @FXML
     private Label firstNameWelcomeLabel;
+
+    @FXML
+    private Label placeOrderPrompt;
 
     @FXML
     private Button homeReturningButton;
 
     @FXML
     private TextField promotionUserNameTextField;
+
+    @FXML
+    private TextField placeOrderISBNField;
+
+    @FXML
+    private Spinner<Integer> placeOrderCountSpinner;
 
     @FXML
     private Button signOutButton;
@@ -68,12 +79,11 @@ public class ManagerProfileController {
     @FXML
     private Label warning;
 
-    @FXML 
+    @FXML
     private Label promotePrompt;
 
     @FXML
     private Label warningPrice;
-
 
     @FXML
     private Label warningQuantity;
@@ -86,6 +96,11 @@ public class ManagerProfileController {
 
     List<String> authors = new ArrayList<>();
     int min_stock = 2;
+
+
+    public ManagerProfileController() {
+       
+    }
 
     void setAllInvisible() {
         PromotionPane.setVisible(false);
@@ -100,6 +115,8 @@ public class ManagerProfileController {
         warningQuantity.setVisible(false);
         warning.setVisible(false);
         promotePrompt.setVisible(false);
+        placeOrderPrompt.setVisible(false);
+
     }
 
     @FXML
@@ -111,6 +128,7 @@ public class ManagerProfileController {
 
     @FXML
     void PlaceOrderButtonOnAction(ActionEvent event) {
+        placeOrderCountSpinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 1000, 1));
         setAllWarningsInvisible();
         setAllInvisible();
         PlaceOrderPane.setVisible(true);
@@ -130,7 +148,6 @@ public class ManagerProfileController {
         ModifyBookPane.setVisible(true);
     }
 
-
     @FXML
     void confirmAddBook(ActionEvent event) throws SQLException {
         if (titleField.getText().isEmpty() ||
@@ -146,17 +163,17 @@ public class ManagerProfileController {
         } else if (!Helpers.isNumeric(priceField.getText())) {
             setAllWarningsInvisible();
             warningPrice.setVisible(true);
-        }else if(PublicationDatePicker.getValue() == null){
+        } else if (PublicationDatePicker.getValue() == null) {
             warning.setText("Publication Date should be specified.");
             warning.setVisible(true);
-        }else {
+        } else {
             warning.setText("Please make sure all fields are filled.");
             ManagerDAO managerDAO = ManagerDAO.getInstance();
             setAllWarningsInvisible();
 
             Book book = Book.builder().title(titleField.getText())
                     .isbn(ISBNField.getText())
-                    .publisher_name(publisherField.getText())
+                    .publisher_name(publisherField  .getText())
                     .category(categoryField.getText())
                     .publication_year(getDateFromDatePicker())
                     .stock(Integer.parseInt(quantityField.getText()))
@@ -171,28 +188,55 @@ public class ManagerProfileController {
 
     @FXML
     void PromotionConfirmOnAction(ActionEvent event) {
-        if(promotionUserNameTextField.getText().isEmpty()) {
+        if (promotionUserNameTextField.getText().isEmpty()) {
             promotePrompt.setText("Enter username to promote");
             promotePrompt.setTextFill(Color.RED);
             promotePrompt.setVisible(true);
-        }
-        else {
+        } else {
             ManagerDAO managerDAO = ManagerDAO.getInstance();
             try {
                 String username = promotionUserNameTextField.getText();
                 managerDAO.promoteCutomer(username);
-                promotePrompt.setText(username + " is promoted" );
+                promotePrompt.setText(username + " is promoted");
                 promotePrompt.setTextFill(Color.GREEN);
                 promotePrompt.setVisible(true);
-            }
-            catch(Exception e) {
-                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                promotePrompt.setTextFill(Color.RED);
+                promotePrompt.setText("An error has occured");
                 promotePrompt.setVisible(true);
-                promotePrompt.setText(e.getMessage());
+
             }
         }
     }
 
+    @FXML
+    void placeOrderConfirmOnAction(ActionEvent event) {
+        if(placeOrderISBNField.getText().isEmpty()) {
+            placeOrderPrompt.setText("Enter Book ISBN to place an order");
+            placeOrderPrompt.setTextFill(Color.RED);
+            placeOrderPrompt.setVisible(true);
+        }
+        else {
+            ManagerDAO managerDAO = ManagerDAO.getInstance();
+            try {
+                managerDAO.placeOrder(Order.builder()
+                        .username(UserInfo.currentUser.getUsername())
+                        .book_isbn(placeOrderISBNField.getText())
+                        .count(placeOrderCountSpinner.getValue())
+                        .order_date(Date.valueOf(LocalDate.now())).build());
+
+                placeOrderPrompt.setText("The order is placed successfully");
+                placeOrderPrompt.setTextFill(Color.GREEN);
+                placeOrderPrompt.setVisible(true);
+                
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                placeOrderPrompt.setText("An error has occured");
+                placeOrderPrompt.setTextFill(Color.RED);
+                placeOrderPrompt.setVisible(true);
+            }
+        }
+    }
 
     @FXML
     void homeReturningOnAction(ActionEvent event) {
@@ -212,7 +256,7 @@ public class ManagerProfileController {
         }
     }
 
-    void clearAddBookFields(){
+    void clearAddBookFields() {
         titleField.clear();
         ISBNField.clear();
         publisherField.clear();
@@ -222,10 +266,9 @@ public class ManagerProfileController {
         authors.clear();
     }
 
-    java.sql.Date getDateFromDatePicker(){
+    java.sql.Date getDateFromDatePicker() {
         LocalDate localDate = PublicationDatePicker.getValue();
         return Date.valueOf(localDate);
     }
-
 
 }

@@ -54,26 +54,24 @@ public class ManagerDAO extends DAO {
                     "values" + "('" + isbn + "', '" + author + "')" + ";");
         }
     }
-    //TODO:Place order
     public void placeOrder(Order order) throws SQLException {
+        System.out.println(order.toString());
         Statement stmt = connection.createStatement();
         stmt.execute("insert into public.order " +
                         "values" + order.toString() + ";");
     }
-    //TODO:Confirm Order
     public void confirmOrder(Order order) throws SQLException {
         Statement stmt = connection.createStatement();
         stmt.execute("delete from public.order " +
                 " where book_isbn = '" + order.getBook_isbn() + "' and username = '" + order.getUsername() + "'; ");
     }
-    //TODO: Report total sales for all books in the previous month
     public void reportLastMonthSales() throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from public.sale where sale_date > '" + Date.valueOf(LocalDate.now().minusMonths(1)) + "'; ");
     }
 
 
-    
+
 
 
 
