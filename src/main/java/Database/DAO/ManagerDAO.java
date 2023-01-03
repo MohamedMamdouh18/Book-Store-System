@@ -5,6 +5,7 @@ import Database.Models.Book;
 
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class ManagerDAO extends DAO {
     private static ManagerDAO managerDAO = null;
@@ -38,4 +39,14 @@ public class ManagerDAO extends DAO {
                 "set " + attribute + " = '" + value +
                 "' where isbn = '" + isbn + "'; ");
     }
+
+    public void addAuthors(String isbn, List<String> authors) throws SQLException {
+        Statement stmt = connection.createStatement();
+        for(var author : authors){
+            System.out.println("values" + "(" + isbn + ", " + author + ")" + ";");
+            stmt.execute("insert into public.book_author " +
+                    "values" + "('" + isbn + "', '" + author + "')" + ";");
+        }
+    }
+
 }

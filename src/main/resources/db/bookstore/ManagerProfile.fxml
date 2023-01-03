@@ -1,22 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.ManagerProfileController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.ManagerProfileController">
    <children>
-      <AnchorPane layoutX="36.0" layoutY="123.0" prefHeight="354.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+      <AnchorPane layoutX="35.0" layoutY="123.0" prefHeight="354.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
          <children>
             <Label layoutX="89.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="PromoteButton" layoutX="91.0" layoutY="69.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
+            <Pane layoutX="37.0" layoutY="47.0" prefHeight="260.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="PromoteButton" layoutX="53.0" layoutY="14.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="Place" layoutX="39.0" layoutY="73.0" mnemonicParsing="false" onAction="#PlaceOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Place Order" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="PromoteButton2" layoutX="47.0" layoutY="130.0" mnemonicParsing="false" onAction="#AddBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Add Book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="PromoteButton21" layoutX="3.0" layoutY="185.0" mnemonicParsing="false" onAction="#ModifyBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Modify Existing Book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+            <Button fx:id="ConfirmOrderButton" layoutX="66.0" layoutY="286.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="17.0" />
                </font>
@@ -27,6 +52,111 @@
          <children>
             <TextField fx:id="promotionUserNameTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
             <Button fx:id="PromotionConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="PlaceOrderPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <TextField fx:id="orderBookIsbnTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Book ISBN" />
+            <Button fx:id="placeOrderConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane fx:id="AddBookPane" layoutX="438.0" layoutY="64.0" prefHeight="528.0" prefWidth="382.0" styleClass="creamy-card" stylesheets="@application.css" visible="false">
+         <children>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="77.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="ISBN:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="ISBNField" alignment="CENTER" layoutX="176.0" layoutY="78.0" promptText="ISBN" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font></TextField>
+            <Label alignment="CENTER" layoutX="59.0" layoutY="122.0" prefHeight="25.0" prefWidth="77.0" styleClass="brown-label" text="Author(s)">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="66.0" layoutY="209.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="Publisher">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="publisherField" alignment="CENTER" layoutX="176.0" layoutY="209.0" promptText="Publisher" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="63.0" layoutY="254.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="Category">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="categoryField" alignment="CENTER" layoutX="176.0" layoutY="252.0" promptText="category" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="44.0" layoutY="298.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Publication Year">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="pubYearField" alignment="CENTER" layoutX="179.0" layoutY="297.0" promptText="category" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;" visible="false">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="44.0" layoutY="344.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Price">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="priceField" alignment="CENTER" layoutX="179.0" layoutY="343.0" promptText="price" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Label alignment="CENTER" layoutX="44.0" layoutY="387.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Quantity">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="quantityField" alignment="CENTER" layoutX="179.0" layoutY="387.0" promptText="quantity" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="AddBookButton" layoutX="116.0" layoutY="444.0" mnemonicParsing="false" onAction="#confirmAddBook" prefHeight="35.0" prefWidth="150.0" styleClass="brown-button" text="Add Book" textFill="#fff9f2" />
+            <TextField fx:id="titleField" alignment="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="56.0" prefWidth="335.0" promptText="Title" style="-fx-background-color: transparent;" styleClass="brown-label">
+               <font>
+                  <Font name="System Bold" size="26.0" />
+               </font>
+            </TextField>
+            <Label fx:id="warning" layoutX="97.0" layoutY="497.0" text="Please make sure all fields are filled." textFill="#f20000" visible="false" />
+            <Label fx:id="warningQuantity" layoutX="97.0" layoutY="497.0" text="Quantity should be a number." textFill="#f20000" visible="false" />
+            <Label fx:id="warningPrice" layoutX="97.0" layoutY="497.0" text="Price should be a number." textFill="#f20000" visible="false" />
+            <TextField fx:id="AuthorField" alignment="CENTER" layoutX="176.0" layoutY="121.0" prefHeight="63.0" prefWidth="120.0" promptText="Author" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+               <font>
+                  <Font name="System Italic" size="12.0" />
+               </font>
+            </TextField>
+            <Button fx:id="AddAuthor" layoutX="305.0" layoutY="135.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="35.0" prefWidth="48.0" styleClass="brown-button" text="Add" textFill="#fff9f2" />
+            <Label fx:id="warningAuthor" layoutX="107.0" layoutY="507.0" text="Author field is Empty." textFill="#f20000" visible="false" />
+            <DatePicker fx:id="PublicationDatePicker" layoutX="167.0" layoutY="299.0" />
+         </children>
+      </Pane>
+      <Pane fx:id="ModifyBookPane" layoutX="563.0" layoutY="265.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <TextField fx:id="promotionUserNameTextField111" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
+            <Button fx:id="PromotionConfirmButton111" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
