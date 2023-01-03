@@ -2,6 +2,7 @@ package Database.DAO;
 
 import Database.DBConnector;
 import Database.Models.Book;
+import Database.Models.Order;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -48,5 +49,19 @@ public class ManagerDAO extends DAO {
                     "values" + "('" + isbn + "', '" + author + "')" + ";");
         }
     }
+    //TODO:Place order
+    public void placeOrder(Order order) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute("insert into public.order " +
+                        "values" + order.toString() + ";");
+    }
+    //TODO:Confirm Order
+    public void confirmOrder(Order order) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute("delete from public.order " +
+                " where book_isbn = '" + order.getBook_isbn() + "' and username = '" + order.getUsername() + "'; ");
+    }
+    //TODO: Report total sales for all books in the previous month
+
 
 }
