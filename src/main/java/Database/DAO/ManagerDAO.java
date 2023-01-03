@@ -4,8 +4,12 @@ import Database.DBConnector;
 import Database.Models.Book;
 import Database.Models.Order;
 
+import java.sql.Date;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.*;
 import java.util.List;
 
 public class ManagerDAO extends DAO {
@@ -62,6 +66,9 @@ public class ManagerDAO extends DAO {
                 " where book_isbn = '" + order.getBook_isbn() + "' and username = '" + order.getUsername() + "'; ");
     }
     //TODO: Report total sales for all books in the previous month
-
+    public void reportLastMonthSales() throws SQLException {
+        Statement stmt = connection.createStatement();
+        ResultSet rs = stmt.executeQuery("select * from public.sale where sale_date > '" + Date.valueOf(LocalDate.now().minusMonths(1)) + "'; ");
+    }
 
 }
