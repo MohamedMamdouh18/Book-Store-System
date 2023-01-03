@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.List;
 
 public class ManagerDAO extends DAO {
+    
     private static ManagerDAO managerDAO = null;
 
     private ManagerDAO() {
@@ -48,5 +49,10 @@ public class ManagerDAO extends DAO {
                     "values" + "('" + isbn + "', '" + author + "')" + ";");
         }
     }
+
+
+    
+
+
 
 }

@@ -10,52 +10,53 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.ManagerProfileController">
    <children>
-      <AnchorPane layoutX="35.0" layoutY="123.0" prefHeight="354.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+      <AnchorPane layoutX="39.0" layoutY="83.0" prefHeight="386.0" prefWidth="335.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
          <children>
-            <Label layoutX="89.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+            <Label layoutX="89.0" layoutY="13.0" prefHeight="35.0" prefWidth="120.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Pane layoutX="37.0" layoutY="47.0" prefHeight="260.0" prefWidth="200.0">
+            <Pane layoutX="18.0" layoutY="64.0" prefHeight="295.0" prefWidth="298.0">
                <children>
-                  <Button fx:id="PromoteButton" layoutX="53.0" layoutY="14.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
+                  <Button fx:id="PromoteButton" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Place" layoutX="39.0" layoutY="73.0" mnemonicParsing="false" onAction="#PlaceOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Place Order" textFill="WHITE">
+                  <Button fx:id="Place" layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#PlaceOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Place Order" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="PromoteButton2" layoutX="47.0" layoutY="130.0" mnemonicParsing="false" onAction="#AddBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Add Book" textFill="WHITE">
+                  <Button fx:id="PromoteButton2" layoutX="14.0" layoutY="129.0" mnemonicParsing="false" onAction="#AddBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Add Book" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="PromoteButton21" layoutX="3.0" layoutY="185.0" mnemonicParsing="false" onAction="#ModifyBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Modify Existing Book" textFill="WHITE">
+                  <Button fx:id="PromoteButton21" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#ModifyBookButtonOnAction" prefHeight="37.0" prefWidth="184.0" styleClass="brown-button" stylesheets="@application.css" text="Modify Book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ConfirmOrderButton" layoutX="14.0" layoutY="244.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
-            <Button fx:id="ConfirmOrderButton" layoutX="66.0" layoutY="286.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="17.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
-      <Pane fx:id="PromotionPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+      <Pane fx:id="PromotionPane" layoutX="526.0" layoutY="225.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css">
          <children>
-            <TextField fx:id="promotionUserNameTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
-            <Button fx:id="PromotionConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+            <TextField fx:id="promotionUserNameTextField" layoutX="57.0" layoutY="45.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
+            <Button fx:id="PromotionConfirmButton" layoutX="107.0" layoutY="101.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="promotePrompt" layoutX="57.0" layoutY="75.0" text="Enter username to promote" textFill="#f20000" visible="false"> </Label>
          </children>
       </Pane>
       <Pane fx:id="PlaceOrderPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
@@ -163,5 +164,6 @@
             </Button>
          </children>
       </Pane>
+      <Label fx:id="warning1" layoutX="107.0" layoutY="507.0" text="Please make sure all fields are filled." textFill="#f20000" visible="false" />
    </children>
 </AnchorPane>

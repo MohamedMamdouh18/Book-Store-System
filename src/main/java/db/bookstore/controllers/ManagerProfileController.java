@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 
 import java.sql.Date;
 import java.sql.SQLException;
@@ -65,8 +67,14 @@ public class ManagerProfileController {
 
     @FXML
     private Label warning;
+
+    @FXML 
+    private Label promotePrompt;
+
     @FXML
     private Label warningPrice;
+
+
     @FXML
     private Label warningQuantity;
 
@@ -91,28 +99,33 @@ public class ManagerProfileController {
         warningPrice.setVisible(false);
         warningQuantity.setVisible(false);
         warning.setVisible(false);
+        promotePrompt.setVisible(false);
     }
 
     @FXML
     void PromoteButtonOnAction(ActionEvent event) {
+        setAllWarningsInvisible();
         setAllInvisible();
         PromotionPane.setVisible(true);
     }
 
     @FXML
     void PlaceOrderButtonOnAction(ActionEvent event) {
+        setAllWarningsInvisible();
         setAllInvisible();
         PlaceOrderPane.setVisible(true);
     }
 
     @FXML
     void AddBookButtonOnAction(ActionEvent event) {
+        setAllWarningsInvisible();
         setAllInvisible();
         AddBookPane.setVisible(true);
     }
 
     @FXML
     void ModifyBookButtonOnAction(ActionEvent event) {
+        setAllWarningsInvisible();
         setAllInvisible();
         ModifyBookPane.setVisible(true);
     }
@@ -158,8 +171,28 @@ public class ManagerProfileController {
 
     @FXML
     void PromotionConfirmOnAction(ActionEvent event) {
-
+        if(promotionUserNameTextField.getText().isEmpty()) {
+            promotePrompt.setText("Enter username to promote");
+            promotePrompt.setTextFill(Color.RED);
+            promotePrompt.setVisible(true);
+        }
+        else {
+            ManagerDAO managerDAO = ManagerDAO.getInstance();
+            try {
+                String username = promotionUserNameTextField.getText();
+                managerDAO.promoteCutomer(username);
+                promotePrompt.setText(username + " is promoted" );
+                promotePrompt.setTextFill(Color.GREEN);
+                promotePrompt.setVisible(true);
+            }
+            catch(Exception e) {
+                System.out.println(e.getMessage());
+                promotePrompt.setVisible(true);
+                promotePrompt.setText(e.getMessage());
+            }
+        }
     }
+
 
     @FXML
     void homeReturningOnAction(ActionEvent event) {
