@@ -162,6 +162,7 @@ public class CartController implements Initializable {
             bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
             bookTable.refresh();
             totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+            bookStock.setText(currentBook.getStock().toString());
         } else {
             hideLabels();
             cartWarning.setVisible(true);
@@ -177,6 +178,7 @@ public class CartController implements Initializable {
         bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
         bookTable.refresh();
         totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+        bookStock.setText(currentBook.getStock().toString());
     }
 
     void hideLabels() {

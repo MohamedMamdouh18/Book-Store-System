@@ -14,7 +14,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.CartController">
    <children>
-      <TableView fx:id="bookTable" layoutY="265.0" onMouseClicked="#tableSelectBook" prefHeight="336.0" prefWidth="558.0" styleClass="creamy-table">
+      <TableView fx:id="bookTable" layoutY="272.0" onMouseClicked="#tableSelectBook" prefHeight="329.0" prefWidth="558.0" styleClass="creamy-table">
          <columns>
             <TableColumn fx:id="isbn" prefWidth="75.0" text="ISBN" />
             <TableColumn fx:id="title" prefWidth="75.0" text="Title" />
@@ -25,7 +25,7 @@
             <TableColumn fx:id="quantity" prefWidth="72.0" text="Quantity" />
          </columns>
       </TableView>
-      <Pane fx:id="creditPane" layoutX="91.0" layoutY="75.0" prefHeight="197.0" prefWidth="359.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" AnchorPane.topAnchor="60.0">
+      <Pane fx:id="creditPane" layoutX="91.0" layoutY="77.0" prefHeight="188.0" prefWidth="359.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" AnchorPane.topAnchor="77.0">
          <children>
             <TextField fx:id="creditCardHolderTextField" layoutX="73.0" layoutY="14.0" prefHeight="25.0" prefWidth="214.0" promptText="Credit Card Holder" />
             <TextField fx:id="idTextField" layoutX="73.0" layoutY="39.0" prefHeight="25.0" prefWidth="214.0" promptText="ID" />
@@ -142,7 +142,7 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="5.0" layoutY="60.0" prefHeight="25.0" prefWidth="69.0" text="ISBN:">
+            <Label alignment="CENTER" layoutX="5.0" layoutY="60.0" prefHeight="25.0" prefWidth="69.0" text="ISBN">
                <font>
                   <Font size="15.0" />
                </font>
@@ -155,11 +155,17 @@
             <Button layoutX="104.0" layoutY="389.0" mnemonicParsing="false" onAction="#addBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="+">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
+               </cursor>
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             <Button layoutX="176.0" layoutY="389.0" mnemonicParsing="false" onAction="#removeBook" prefHeight="43.0" prefWidth="44.0" style="-fx-background-radius: 100;" text="-">
                <cursor>
                   <Cursor fx:constant="HAND" />
-               </cursor></Button>
+               </cursor>
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
             <Label fx:id="cartRemove" alignment="CENTER" contentDisplay="CENTER" layoutX="18.0" layoutY="431.0" prefHeight="43.0" prefWidth="284.0" text="Removed Successfully" textFill="#2bff00">
                <font>
                   <Font size="20.0" />
