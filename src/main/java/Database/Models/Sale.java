@@ -1,26 +1,26 @@
 package Database.Models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class Sale {
     private String book_isbn;
     private  String username;
     private int count;
     private Date sale_date;
 
-    public Sale(String book_isbn, String username, int count, Date sale_date) {
-        this.book_isbn = book_isbn;
-        this.username = username;
-        this.count = count;
-        this.sale_date = sale_date;
+    public Sale(ResultSet set) throws SQLException {
+        this.book_isbn = set.getString(1);
+        this.username = set.getString(2);
+        this.count = set.getInt(3);
+        this.sale_date = set.getDate(4);
+
     }
 
     @Override
