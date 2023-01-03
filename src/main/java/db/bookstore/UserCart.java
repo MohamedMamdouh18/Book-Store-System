@@ -18,20 +18,23 @@ public class UserCart {
     public boolean addBook(Book book) {
         String isbn = book.getIsbn();
 
-        inStock.put(isbn, book.getStock());
         bookData.put(isbn, book);
         if (inCart.containsKey(isbn)) {
             if (Objects.equals(inCart.get(isbn), inStock.get(isbn)))
                 return false;
             inCart.put(isbn, inCart.get(isbn) + 1);
-        } else
+        } else {
             inCart.put(isbn, 1);
+            inStock.put(isbn, book.getStock());
+        }
+        System.out.println(inCart.get(isbn));
         return true;
     }
 
-    public List<Book> getCartList(){
-        List<Book> cartBooks = new ArrayList<>() ;
-        for(Book book : bookData.values()){
+
+    public List<Book> getCartList() {
+        List<Book> cartBooks = new ArrayList<>();
+        for (Book book : bookData.values()) {
             book.setStock(inCart.get(book.getIsbn()));
             cartBooks.add(book);
         }
