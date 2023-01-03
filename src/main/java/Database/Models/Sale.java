@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 @Builder
 @Getter
 @Setter
@@ -32,3 +33,4 @@ public class Sale {
                 "')";
     }
 }
+

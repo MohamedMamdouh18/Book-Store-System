@@ -1,6 +1,7 @@
 package Database.DAO;
 
 import Database.DBConnector;
+import Database.Models.Sale;
 import Database.Models.User;
 
 import java.sql.ResultSet;
@@ -35,5 +36,11 @@ public class AdminDAO extends DAO {
         Statement stmt = connection.createStatement();
         stmt.execute("insert into public.user " +
                 "values" + user.toString() + ";");
+    }
+
+    public void insertSale(Sale sale) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.execute("insert into public.sale " +
+                "values" + sale.toString() + ";");
     }
 }
