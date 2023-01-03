@@ -2,6 +2,7 @@ package db.bookstore.controllers;
 
 import Database.DAO.AdminDAO;
 import Database.Models.User;
+import db.bookstore.UserCart;
 import db.bookstore.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +50,7 @@ public class SignInController implements Initializable {
         else {
             RoutingHandler.changeView(RoutingHandler.Home);
             UserInfo.currentUser = answer;
-            UserInfo.userCart = new ArrayList<>();
+            UserInfo.userCart = new UserCart();
             RoutingHandler.notifySigning();
         }
     }

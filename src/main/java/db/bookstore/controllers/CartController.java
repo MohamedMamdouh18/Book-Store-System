@@ -1,6 +1,5 @@
 package db.bookstore.controllers;
 
-import Database.DAO.CustomerDAO;
 import Database.Models.Book;
 import db.bookstore.UserInfo;
 import javafx.collections.FXCollections;
@@ -15,11 +14,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import lombok.SneakyThrows;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.ResourceBundle;
 
 public class CartController implements Initializable {
 
@@ -79,16 +76,7 @@ public class CartController implements Initializable {
         quantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("stock"));
         publisher.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher_name"));
 
-        Map < Book , Integer > map = new HashMap<>();
-        for (Book book : UserInfo.userCart){
-            if (!map.containsKey(book)){
-                map.put(book , 1);
-            }else{
-                map.put(book , map.get(book) + 1);
-            }
-        }
-        List < Book > books = new ArrayList<>();
-
+        bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
     }
 
     @FXML

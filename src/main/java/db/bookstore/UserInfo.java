@@ -7,5 +7,5 @@ import java.util.List;
 
 public class UserInfo {
     public static User currentUser;
-    public static List<Book> userCart;
+    public static UserCart userCart;
 }

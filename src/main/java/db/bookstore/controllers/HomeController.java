@@ -61,6 +61,10 @@ public class HomeController implements Initializable {
     private Label bookYear;
     @FXML
     private AnchorPane bookDetails;
+    @FXML
+    private Label cartWarning;
+    @FXML
+    private Label cartAdding;
 
     @SneakyThrows
     @Override
@@ -85,10 +89,14 @@ public class HomeController implements Initializable {
         List<Book> books = CustomerDAO.getInstance().getBooks();
         bookTable.setItems(FXCollections.observableArrayList(books));
         bookDetails.setVisible(false);
+        cartWarning.setVisible(false);
+        cartAdding.setVisible(false);
     }
 
     @FXML
     void searchOnAction(ActionEvent event) throws IOException, SQLException {
+        bookDetails.setVisible(false);
+
         String attribute = comboBoxSelection.get(searchAttribute.getValue());
         String value = searchValue.getText();
         List<Book> ans = CustomerDAO.getInstance().searchBookByAttribute(attribute, value);
@@ -100,6 +108,9 @@ public class HomeController implements Initializable {
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
         if (currentBook != null) {
             bookDetails.setVisible(true);
+            cartWarning.setVisible(false);
+            cartAdding.setVisible(false);
+
             bookTitle.setText(currentBook.getTitle());
             bookISBN.setText(currentBook.getIsbn());
             bookCategory.setText(currentBook.getCategory());
@@ -119,7 +130,13 @@ public class HomeController implements Initializable {
     @FXML
     void addCartOnAction(ActionEvent event) {
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
-        UserInfo.userCart.add(currentBook);
+        if (!UserInfo.userCart.addBook(currentBook)) {
+            cartWarning.setVisible(true);
+            cartAdding.setVisible(false);
+        } else {
+            cartWarning.setVisible(false);
+            cartAdding.setVisible(true);
+        }
     }
 
 }
