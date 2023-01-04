@@ -36,11 +36,11 @@ public class Book {
     public String toString() {
         return "('" + this.isbn + "','" +
                 this.title + "','" +
-                this.publication_year + "','" +
-                this.price + "','" +
-                this.category + "','" +
-                this.minimum_stock + "','" +
-                this.stock + "','" +
+                this.publication_year + "'," +
+                this.price + ",'" +
+                this.category + "'," +
+                this.minimum_stock + "," +
+                this.stock + ",'" +
                 this.publisher_name + "'" +
                 ")";
     }
