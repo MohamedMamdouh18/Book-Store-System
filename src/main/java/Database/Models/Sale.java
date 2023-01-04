@@ -2,6 +2,8 @@ package Database.Models;
 
 import lombok.*;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 @Builder
@@ -23,6 +25,13 @@ public class Sale {
         this.sale_date = sale_date;
     }
 
+    public Sale(ResultSet set) throws SQLException {
+        this.book_isbn = set.getString("book_isbn");
+        this.username = set.getString("username");
+        this.count = set.getInt("count");
+        this.sale_date = set.getDate("sale_date");
+        this.sale_id = set.getInt("sale_id");
+    }
     @Override
     public String toString() {
         return "(default,  '" +

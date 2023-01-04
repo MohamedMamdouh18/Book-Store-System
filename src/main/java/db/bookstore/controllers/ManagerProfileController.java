@@ -196,7 +196,7 @@ public class ManagerProfileController {
             ManagerDAO managerDAO = ManagerDAO.getInstance();
             try {
                 String username = promotionUserNameTextField.getText();
-                managerDAO.promoteCutomer(username);
+                managerDAO.promoteCustomer(username);
                 promotePrompt.setText(username + " is promoted");
                 promotePrompt.setTextFill(Color.GREEN);
                 promotePrompt.setVisible(true);
