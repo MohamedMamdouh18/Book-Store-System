@@ -1,76 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" styleClass="background" stylesheets="@application.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="db.bookstore.controllers.ManagerProfileController">
    <children>
-      <AnchorPane layoutX="35.0" layoutY="123.0" prefHeight="354.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
+      <AnchorPane layoutX="39.0" layoutY="83.0" prefHeight="386.0" prefWidth="335.0" style="-fx-background-radius: 25;" styleClass="creamy-card" stylesheets="@application.css">
          <children>
-            <Label layoutX="89.0" layoutY="14.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
+            <Label layoutX="108.0" layoutY="2.0" prefHeight="47.0" prefWidth="120.0" styleClass="brown-label" stylesheets="@application.css" text="Actions" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="System Bold" size="27.0" />
                </font>
             </Label>
-            <Pane layoutX="37.0" layoutY="47.0" prefHeight="260.0" prefWidth="200.0">
+            <Pane layoutX="18.0" layoutY="64.0" prefHeight="295.0" prefWidth="298.0">
                <children>
-                  <Button fx:id="PromoteButton" layoutX="53.0" layoutY="14.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
+                  <Button fx:id="PromoteButton" alignment="CENTER" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#PromoteButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Promote" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="Place" layoutX="39.0" layoutY="73.0" mnemonicParsing="false" onAction="#PlaceOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Place Order" textFill="WHITE">
+                  <Button fx:id="Place" layoutX="14.0" layoutY="71.0" mnemonicParsing="false" onAction="#PlaceOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Place Order" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="PromoteButton2" layoutX="47.0" layoutY="130.0" mnemonicParsing="false" onAction="#AddBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Add Book" textFill="WHITE">
+                  <Button fx:id="PromoteButton2" layoutX="14.0" layoutY="129.0" mnemonicParsing="false" onAction="#AddBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Add Book" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
-                  <Button fx:id="PromoteButton21" layoutX="3.0" layoutY="185.0" mnemonicParsing="false" onAction="#ModifyBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Modify Existing Book" textFill="WHITE">
+                  <Button fx:id="PromoteButton21" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#modifyBookButtonOnAction" prefHeight="37.0" prefWidth="184.0" styleClass="brown-button" stylesheets="@application.css" text="Modify Book" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold Italic" size="17.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="ConfirmOrderButton" layoutX="14.0" layoutY="244.0" mnemonicParsing="false" onAction="#confirmOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
                      <font>
                         <Font name="System Bold Italic" size="17.0" />
                      </font>
                   </Button>
                </children>
             </Pane>
-            <Button fx:id="ConfirmOrderButton" layoutX="66.0" layoutY="286.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm Order" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="17.0" />
-               </font>
-            </Button>
          </children>
       </AnchorPane>
-      <Pane fx:id="PromotionPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+      <Pane fx:id="PromotionPane" layoutX="519.0" layoutY="218.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
          <children>
-            <TextField fx:id="promotionUserNameTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
-            <Button fx:id="PromotionConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+            <Label layoutX="14.0" layoutY="50.0" text="Username:" />
+            <TextField fx:id="promotionUserNameTextField" alignment="CENTER" layoutX="93.0" layoutY="46.0" prefHeight="25.0" prefWidth="181.0" promptText="Username">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></TextField>
+            <Button fx:id="PromotionConfirmButton" layoutX="137.0" layoutY="83.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
+            <Label fx:id="promotePrompt" layoutX="17.0" layoutY="128.0" text="Enter username to promote" textFill="#f20000" visible="false"> </Label>
          </children>
       </Pane>
-      <Pane fx:id="PlaceOrderPane" layoutX="533.0" layoutY="235.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+      <Pane fx:id="PlaceOrderPane" layoutX="541.0" layoutY="163.0" prefHeight="224.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
          <children>
-            <TextField fx:id="orderBookIsbnTextField" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Book ISBN" />
-            <Button fx:id="placeOrderConfirmButton" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+            <TextField fx:id="placeOrderISBNField" alignment="CENTER" layoutX="88.0" layoutY="37.0" prefHeight="25.0" prefWidth="175.0" promptText="ISBN">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></TextField>
+            <Button fx:id="placeOrderConfirmButton" layoutX="139.0" layoutY="137.0" mnemonicParsing="false" onAction="#placeOrderConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
+            <Label layoutX="26.0" layoutY="41.0" prefHeight="16.0" prefWidth="62.0" text="ISBN:" />
+            <Label layoutX="26.0" layoutY="89.0" prefHeight="16.0" prefWidth="62.0" text="Count" />
+            <Label fx:id="placeOrderPrompt" layoutX="26.0" layoutY="186.0" prefHeight="16.0" prefWidth="239.0" text="Label" visible="false" />
+            <Spinner fx:id="placeOrderCountSpinner" editable="true" layoutX="90.0" layoutY="85.0" prefHeight="24.0" prefWidth="62.0" />
          </children>
       </Pane>
-      <Pane fx:id="AddBookPane" layoutX="438.0" layoutY="64.0" prefHeight="528.0" prefWidth="382.0" styleClass="creamy-card" stylesheets="@application.css" visible="false">
+      <Pane fx:id="AddBookPane" layoutX="413.0" layoutY="60.0" prefHeight="540.0" prefWidth="468.0" styleClass="creamy-card" stylesheets="@application.css" visible="false">
          <children>
-            <Label alignment="CENTER" layoutX="66.0" layoutY="77.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="ISBN:">
+            <Label alignment="CENTER" layoutX="44.0" layoutY="78.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="ISBN:">
                <font>
                   <Font size="15.0" />
                </font>
@@ -79,32 +95,27 @@
                <font>
                   <Font name="System Italic" size="12.0" />
                </font></TextField>
-            <Label alignment="CENTER" layoutX="59.0" layoutY="122.0" prefHeight="25.0" prefWidth="77.0" styleClass="brown-label" text="Author(s)">
+            <Label alignment="CENTER" layoutX="44.0" layoutY="123.0" prefHeight="25.0" prefWidth="77.0" styleClass="brown-label" text="Author(s)">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="66.0" layoutY="209.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="Publisher">
+            <Label alignment="CENTER" layoutX="36.0" layoutY="247.0" prefHeight="25.0" prefWidth="94.0" styleClass="brown-label" text="Publisher">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="publisherField" alignment="CENTER" layoutX="176.0" layoutY="209.0" promptText="Publisher" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+            <TextField fx:id="publisherField" alignment="CENTER" layoutX="179.0" layoutY="247.0" promptText="Publisher" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="63.0" layoutY="254.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="Category">
+            <Label alignment="CENTER" layoutX="49.0" layoutY="285.0" prefHeight="25.0" prefWidth="69.0" styleClass="brown-label" text="Category">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="categoryField" alignment="CENTER" layoutX="176.0" layoutY="252.0" promptText="category" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </TextField>
-            <Label alignment="CENTER" layoutX="44.0" layoutY="298.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Publication Year">
+            <Label alignment="CENTER" layoutX="31.0" layoutY="322.0" prefHeight="27.0" prefWidth="132.0" styleClass="brown-label" text="Publication Year">
                <font>
                   <Font size="15.0" />
                </font>
@@ -114,53 +125,205 @@
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="44.0" layoutY="344.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Price">
+            <Label alignment="CENTER" layoutX="26.0" layoutY="368.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Price">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="priceField" alignment="CENTER" layoutX="179.0" layoutY="343.0" promptText="price" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+            <TextField fx:id="priceField" alignment="CENTER" layoutX="176.0" layoutY="369.0" promptText="price" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Label alignment="CENTER" layoutX="44.0" layoutY="387.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Quantity">
+            <Label alignment="CENTER" layoutX="22.0" layoutY="403.0" prefHeight="27.0" prefWidth="113.0" styleClass="brown-label" text="Quantity">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="quantityField" alignment="CENTER" layoutX="179.0" layoutY="387.0" promptText="quantity" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
-               <font>
-                  <Font name="System Italic" size="12.0" />
-               </font>
-            </TextField>
-            <Button fx:id="AddBookButton" layoutX="116.0" layoutY="444.0" mnemonicParsing="false" onAction="#confirmAddBook" prefHeight="35.0" prefWidth="150.0" styleClass="brown-button" text="Add Book" textFill="#fff9f2" />
-            <TextField fx:id="titleField" alignment="CENTER" layoutX="30.0" layoutY="14.0" prefHeight="56.0" prefWidth="335.0" promptText="Title" style="-fx-background-color: transparent;" styleClass="brown-label">
+            <Button fx:id="AddBookButton" layoutX="290.0" layoutY="458.0" mnemonicParsing="false" onAction="#confirmAddBook" prefHeight="35.0" prefWidth="150.0" styleClass="brown-button" text="Add Book" textFill="#fff9f2" />
+            <TextField fx:id="titleField" alignment="CENTER" layoutX="61.0" layoutY="14.0" prefHeight="56.0" prefWidth="304.0" promptText="Title" style="-fx-background-color: transparent;" styleClass="brown-label">
                <font>
                   <Font name="System Bold" size="26.0" />
                </font>
             </TextField>
-            <Label fx:id="warning" layoutX="97.0" layoutY="497.0" text="Please make sure all fields are filled." textFill="#f20000" visible="false" />
+            <Label fx:id="warning" layoutX="15.0" layoutY="505.0" prefHeight="16.0" prefWidth="342.0" text="Please make sure all fields are filled." textFill="#f20000" />
             <Label fx:id="warningQuantity" layoutX="97.0" layoutY="497.0" text="Quantity should be a number." textFill="#f20000" visible="false" />
             <Label fx:id="warningPrice" layoutX="97.0" layoutY="497.0" text="Price should be a number." textFill="#f20000" visible="false" />
-            <TextField fx:id="AuthorField" alignment="CENTER" layoutX="176.0" layoutY="121.0" prefHeight="63.0" prefWidth="120.0" promptText="Author" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
+            <TextField fx:id="AuthorField" alignment="CENTER" layoutX="176.0" layoutY="121.0" prefHeight="27.0" prefWidth="120.0" promptText="Author" style="-fx-background-color: transparent; -fx-border-color: #6e4225; -fx-border-radius: 5;">
                <font>
                   <Font name="System Italic" size="12.0" />
                </font>
             </TextField>
-            <Button fx:id="AddAuthor" layoutX="305.0" layoutY="135.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="35.0" prefWidth="48.0" styleClass="brown-button" text="Add" textFill="#fff9f2" />
+            <Button fx:id="AddAuthor" layoutX="310.0" layoutY="118.0" mnemonicParsing="false" onAction="#addAuthor" prefHeight="24.0" prefWidth="48.0" styleClass="brown-button" text="Add" textFill="#fff9f2" />
             <Label fx:id="warningAuthor" layoutX="107.0" layoutY="507.0" text="Author field is Empty." textFill="#f20000" visible="false" />
-            <DatePicker fx:id="PublicationDatePicker" layoutX="167.0" layoutY="299.0" />
+            <DatePicker fx:id="PublicationDatePicker" layoutX="174.0" layoutY="324.0" />
+            <ComboBox fx:id="categoryComboBox" layoutX="175.0" layoutY="286.0" prefWidth="150.0" promptText="Category" visibleRowCount="5" />
+            <ListView fx:id="authorsListView" layoutX="173.0" layoutY="154.0" prefHeight="70.0" prefWidth="100.0" />
+            <Spinner fx:id="quantitySpinner" layoutX="196.0" layoutY="405.0" prefHeight="24.0" prefWidth="77.0" />
+            <Label alignment="CENTER" layoutX="28.0" layoutY="438.0" prefHeight="27.0" prefWidth="158.0" styleClass="brown-label" text="Minimum Qantity">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="minimumQuantitySpinner" layoutX="198.0" layoutY="440.0" prefHeight="24.0" prefWidth="77.0" />
          </children>
       </Pane>
-      <Pane fx:id="ModifyBookPane" layoutX="563.0" layoutY="265.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+      <Pane fx:id="findBookPane" layoutX="519.0" layoutY="183.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
          <children>
-            <TextField fx:id="promotionUserNameTextField111" layoutX="57.0" layoutY="70.0" prefHeight="25.0" prefWidth="175.0" promptText="Username" />
-            <Button fx:id="PromotionConfirmButton111" layoutX="111.0" layoutY="107.0" mnemonicParsing="false" onAction="#PromotionConfirmOnAction" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+            <TextField fx:id="findBookISBNField" alignment="CENTER" layoutX="87.0" layoutY="36.0" prefHeight="25.0" prefWidth="175.0" promptText="ISBN">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font></TextField>
+            <Button fx:id="findBookButton" layoutX="121.0" layoutY="83.0" mnemonicParsing="false" onAction="#findBookButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Find Book" textFill="WHITE">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
             </Button>
+            <Label layoutX="33.0" layoutY="41.0" text="ISBN:" />
+            <Label fx:id="findBookPrompt" layoutX="33.0" layoutY="125.0" text="No such book" textFill="RED" visible="false" />
+         </children>
+      </Pane>
+      <Label fx:id="warning1" layoutX="107.0" layoutY="507.0" text="Please make sure all fields are filled." textFill="#f20000" visible="false" />
+      <Pane fx:id="modifyBookPane" layoutX="411.0" layoutY="93.0" prefHeight="479.0" prefWidth="457.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <Button fx:id="modifyBookConfirmButton" layoutX="185.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifyBookConfirmButtonOnAction" prefHeight="25.0" prefWidth="69.0" styleClass="brown-button" stylesheets="@application.css" text="Confim" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="findBookPrompt1" layoutX="33.0" layoutY="125.0" text="No such book" textFill="RED" visible="false" />
+            <TextField fx:id="modifyBookTitleField" alignment="CENTER" layoutX="110.0" layoutY="49.0" prefHeight="25.0" prefWidth="175.0" promptText="Title">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </TextField>
+            <Label layoutX="17.0" layoutY="53.0" text="Title:" />
+            <ToggleButton fx:id="modifyBookTitleEditButton" layoutX="309.0" layoutY="50.0" mnemonicParsing="false" onAction="#modifyBookTitleEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookTitleResetButton" layoutX="370.0" layoutY="49.0" mnemonicParsing="false" onAction="#modifyBookTitleResetButtonOnAction" text="reset" />
+            <TextField fx:id="modifyBookPubField" alignment="CENTER" layoutX="110.0" layoutY="101.0" prefHeight="25.0" prefWidth="175.0" promptText="Publisher">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </TextField>
+            <ToggleButton fx:id="modifyBookPubEditButton" layoutX="309.0" layoutY="101.0" mnemonicParsing="false" onAction="#modifyBookPubEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookPubResetButton" layoutX="370.0" layoutY="101.0" mnemonicParsing="false" onAction="#modifyBookPubResetButtonOnAction" text="reset" />
+            <Label layoutX="17.0" layoutY="105.0" text="Publisher:" />
+            <TextField fx:id="modifyBookPriceField" alignment="CENTER" layoutX="110.0" layoutY="153.0" prefHeight="25.0" prefWidth="175.0" promptText="Price">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </TextField>
+            <ToggleButton fx:id="modifyBookPriceEditButton" layoutX="309.0" layoutY="153.0" mnemonicParsing="false" onAction="#modifyBookPriceEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookPriceResetButton" layoutX="370.0" layoutY="153.0" mnemonicParsing="false" onAction="#modifyBookPriceResetButtonOnAction" text="reset" />
+            <Label layoutX="17.0" layoutY="157.0" text="Price:" />
+            <Label layoutX="21.0" layoutY="203.0" text="Category:" />
+            <ComboBox fx:id="modifyBookCategoryComboBox" layoutX="111.0" layoutY="199.0" prefHeight="24.0" prefWidth="171.0" />
+            <ToggleButton fx:id="modifyBookCategoryEditButton" layoutX="309.0" layoutY="199.0" mnemonicParsing="false" onAction="#modifyBookCategoryEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookCategoryResetButton" layoutX="370.0" layoutY="199.0" mnemonicParsing="false" onAction="#modifyBookCategoryResetButtonOnAction" text="reset" />
+            <Label layoutX="21.0" layoutY="258.0" prefWidth="64.0" text="Quantity:" />
+            <Spinner fx:id="modifyBookStockSpinner" layoutX="177.0" layoutY="254.0" prefHeight="24.0" prefWidth="77.0" />
+            <ToggleButton fx:id="modifyBookStockEditButton" layoutX="309.0" layoutY="254.0" mnemonicParsing="false" onAction="#modifyBookStockEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookStockResetButton" layoutX="370.0" layoutY="254.0" mnemonicParsing="false" onAction="#modifyBookStockResetButtonOnAction" text="reset" />
+            <Label layoutX="19.0" layoutY="334.0" prefHeight="16.0" prefWidth="117.0" text="Publication Year:" />
+            <DatePicker fx:id="modifyBookYearDatePicker" layoutX="139.0" layoutY="330.0" prefHeight="24.0" prefWidth="162.0" />
+            <ToggleButton fx:id="modifyBookYearEditButton" layoutX="309.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifyBookYearEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookYearResetButton" layoutX="370.0" layoutY="330.0" mnemonicParsing="false" onAction="#modifyBookYearResetButtonOnAction" text="reset" />
+            <Label fx:id="modifyBookPrompt" layoutX="35.0" layoutY="427.0" prefHeight="16.0" prefWidth="386.0" text="Label" textFill="RED" visible="false" />
+            <Button fx:id="modifyBookfindAnotherButton" layoutX="270.0" layoutY="395.0" mnemonicParsing="false" onAction="#modifyBookfindAnotherButtonOnAction" prefHeight="27.0" prefWidth="162.0" styleClass="brown-button" stylesheets="@application.css" text="Find another book" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="21.0" layoutY="294.0" prefHeight="16.0" prefWidth="132.0" text="Minimum Quantity:" />
+            <Spinner fx:id="modifyBookMinimumStockSpinner" layoutX="177.0" layoutY="290.0" prefHeight="24.0" prefWidth="77.0" />
+            <ToggleButton fx:id="modifyBookMinimumStockEditButton" layoutX="309.0" layoutY="290.0" mnemonicParsing="false" onAction="#modifyBookMinimumStockEditButtonOnAction" prefHeight="24.0" prefWidth="48.0" text="edit" />
+            <Button fx:id="modifyBookMinimumStockResetButton" layoutX="370.0" layoutY="290.0" mnemonicParsing="false" onAction="#modifyBookMinimumStockResetButtonOnAction" text="reset" />
+         </children>
+      </Pane>
+      <Pane fx:id="findOrderPane" layoutX="529.0" layoutY="193.0" prefHeight="165.0" prefWidth="288.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <TextField fx:id="findOrderIDField" alignment="CENTER" layoutX="87.0" layoutY="36.0" prefHeight="25.0" prefWidth="175.0" promptText="ID">
+               <font>
+                  <Font name="System Italic" size="13.0" />
+               </font>
+            </TextField>
+            <Button fx:id="findBookButton1" layoutX="121.0" layoutY="83.0" mnemonicParsing="false" onAction="#findOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Find Order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="41.0" text="Order ID:" />
+            <Label fx:id="findOrderPrompt" layoutX="33.0" layoutY="125.0" text="No such book" textFill="RED" visible="false" />
+         </children>
+      </Pane>
+      <Pane fx:id="confirmOrderPane" layoutX="503.0" layoutY="83.0" prefHeight="386.0" prefWidth="321.0" style="-fx-background-radius: 25;" styleClass="creamy" stylesheets="@application.css" visible="false">
+         <children>
+            <Button fx:id="confirmOrderButton2" layoutX="33.0" layoutY="294.0" mnemonicParsing="false" onAction="#confirmOrderButtonOnAction2" styleClass="brown-button" stylesheets="@application.css" text="Confirm" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="14.0" layoutY="41.0" text="Order ID:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="findOrderPrompt1" layoutX="33.0" layoutY="125.0" text="No such book" textFill="RED" visible="false" />
+            <Button fx:id="findBookButton111" layoutX="126.0" layoutY="294.0" mnemonicParsing="false" onAction="#findAnotherOrderButtonOnAction" styleClass="brown-button" stylesheets="@application.css" text="Find another order" textFill="WHITE">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="confirmOrderIDLabel" layoutX="121.0" layoutY="41.0" prefHeight="16.0" prefWidth="150.0" text="ID">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmOrderUserLabel" layoutX="121.0" layoutY="90.0" prefHeight="16.0" prefWidth="150.0" text="User">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="16.0" layoutY="90.0" text="User:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmOrderISBNLabel" layoutX="121.0" layoutY="132.0" prefHeight="16.0" prefWidth="150.0" text="ISBN">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="132.0" text="ISBN:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmOrderCountLabel" layoutX="121.0" layoutY="168.0" prefHeight="16.0" prefWidth="150.0" text="Count">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="17.0" layoutY="168.0" text="Quantity">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="211.0" text="Order Date:">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmOrderDateLabel" layoutX="121.0" layoutY="211.0" prefHeight="16.0" prefWidth="150.0" text="Order Date">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="confirmOrderPrompt" layoutX="38.0" layoutY="346.0" prefHeight="18.0" prefWidth="248.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
