@@ -1,7 +1,9 @@
 package db.bookstore.controllers;
 
+import Database.DAO.AdminDAO;
 import Database.DAO.CustomerDAO;
 import Database.Models.Book;
+import Database.Models.Sale;
 import db.bookstore.UserInfo;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -18,6 +20,7 @@ import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -26,19 +29,7 @@ public class CartController implements Initializable {
     @FXML
     private TableView<Book> bookTable;
     @FXML
-    private Button cancelButton;
-    @FXML
     private TableColumn<Book, String> category;
-    @FXML
-    private TextField creditCardHolderTextField;
-    @FXML
-    private Button creditConfirmButton;
-    @FXML
-    private TextField cvvTextField;
-    @FXML
-    private DatePicker expiryDateTextField;
-    @FXML
-    private TextField idTextField;
     @FXML
     private TableColumn<Book, String> isbn;
     @FXML
@@ -51,6 +42,16 @@ public class CartController implements Initializable {
     private TableColumn<Book, Integer> quantity;
     @FXML
     private TableColumn<Book, String> title;
+    @FXML
+    private Button cancelButton;
+    @FXML
+    private TextField creditCardHolderTextField;
+    @FXML
+    private TextField cvvTextField;
+    @FXML
+    private DatePicker expiryDateTextField;
+    @FXML
+    private TextField idTextField;
     @FXML
     private Label bookAuthors;
     @FXML
@@ -73,6 +74,14 @@ public class CartController implements Initializable {
     private Label cartWarning;
     @FXML
     private Label cartAdding;
+    @FXML
+    private Label cartRemove;
+    @FXML
+    private Label totalPrice;
+    @FXML
+    private Label wrongCard;
+    @FXML
+    private Label successfulPurchase;
 
     @SneakyThrows
     @Override
@@ -87,16 +96,33 @@ public class CartController implements Initializable {
 
         bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
         bookDetails.setVisible(false);
+        totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+        hideLabels();
     }
 
     @FXML
-    void cancelButtonOnAction(ActionEvent event) {
+    void confirmOrderOnAction(ActionEvent event) throws SQLException {
+        hideLabels();
+        if (Date.valueOf(LocalDate.now()).after(getDateFromDatePicker()))
+            wrongCard.setVisible(true);
+        else {
+            var books = bookTable.getItems();
+            for (int i = 0; i < books.size(); i++) {
+                System.out.println(UserInfo.currentUser.getUsername());
+                Sale sale = Sale.builder().username(UserInfo.currentUser.getUsername())
+                        .sale_date(Date.valueOf(LocalDate.now())).book_isbn(books.get(i).getIsbn())
+                        .count(books.get(i).getStock()).build();
+                System.out.println(sale.toString());
+                AdminDAO.getInstance().insertSale(sale);
+            }
 
-    }
-
-    @FXML
-    void creditConfirmButtonOnAction(ActionEvent event) {
-
+            successfulPurchase.setVisible(true);
+            UserInfo.userCart.emptyCart();
+            bookTable.setItems(FXCollections.observableArrayList(new ArrayList<>()));
+            bookTable.refresh();
+            bookDetails.setVisible(false);
+            totalPrice.setText("0.0");
+        }
     }
 
     @FXML
@@ -104,8 +130,7 @@ public class CartController implements Initializable {
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
         if (currentBook != null) {
             bookDetails.setVisible(true);
-            cartWarning.setVisible(false);
-            cartAdding.setVisible(false);
+            hideLabels();
 
             bookTitle.setText(currentBook.getTitle());
             bookISBN.setText(currentBook.getIsbn());
@@ -132,18 +157,35 @@ public class CartController implements Initializable {
     void addBook(ActionEvent event) {
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
         if (UserInfo.userCart.addBook(currentBook)) {
-            cartWarning.setVisible(false);
+            hideLabels();
             cartAdding.setVisible(true);
             bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
+            bookTable.refresh();
+            totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+            bookStock.setText(currentBook.getStock().toString());
         } else {
+            hideLabels();
             cartWarning.setVisible(true);
-            cartAdding.setVisible(false);
         }
     }
 
     @FXML
     void removeBook(ActionEvent event) {
+        hideLabels();
+        cartRemove.setVisible(true);
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
+        UserInfo.userCart.removeBook(currentBook);
+        bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
+        bookTable.refresh();
+        totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+        bookStock.setText(currentBook.getStock().toString());
     }
 
+    void hideLabels() {
+        cartRemove.setVisible(false);
+        cartWarning.setVisible(false);
+        cartAdding.setVisible(false);
+        successfulPurchase.setVisible(false);
+        wrongCard.setVisible(false);
+    }
 }
