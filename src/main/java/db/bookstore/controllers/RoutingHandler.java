@@ -15,6 +15,7 @@ public class RoutingHandler {
     public final static String ManagerProfile = "ManagerProfile.fxml";
     public final static String Home = "HomeView.fxml";
     public final static String Cart = "Cart.fxml";
+    public final static String ManagerReports = "ManagerReports.fxml";
     private static AnchorPane mainView = null;
     private static MainController mainController = null;
 

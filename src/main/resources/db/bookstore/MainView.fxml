@@ -57,6 +57,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <Button fx:id="managerReports" layoutX="367.0" layoutY="12.0" mnemonicParsing="false" onAction="#managerReportsOnAction" style="-fx-background-color: transpare;" styleClass="brown-label" stylesheets="@application.css" text="Manager Reports" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
    </children>

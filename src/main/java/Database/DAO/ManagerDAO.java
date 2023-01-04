@@ -1,18 +1,13 @@
 package Database.DAO;
 
 import Database.DBConnector;
-import Database.Models.Book;
-import Database.Models.Order;
-import Database.Models.Publisher;
-import Database.Models.Sale;
-import Database.Models.User;
+import Database.Models.*;
 
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,35 +73,38 @@ public class ManagerDAO extends DAO {
         stmt.execute("delete from public.order " +
                 " where book_isbn = '" + order.getBook_isbn() + "' and username = '" + order.getUsername() + "'; ");
     }
+
     public ArrayList<Sale> reportLastMonthSales() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<Sale> sales = new ArrayList<>();
         ResultSet rs = stmt.executeQuery("select * from public.sale where sale_date > '" + Date.valueOf(LocalDate.now().minusMonths(1)) + "'; ");
-        if (!rs.isBeforeFirst() )
+        if (!rs.isBeforeFirst())
             return new ArrayList<>();
         while (rs.next())
             sales.add(new Sale(rs));
         return sales;
     }
+
     public ArrayList<Book> reportTopTenBooks() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<Book> books = new ArrayList<>();
-        ResultSet rs = stmt.executeQuery("select distinct isbn, title, publication_year, price, category, minimum_stock, stock, publisher_name" +
-                                            " from public.sale s, public.book b where s.book_isbn = b.isbn and sale_date > '"
-                                            + Date.valueOf(LocalDate.now().minusMonths(3)) + "' order by count desc limit 10; ");
-        if (!rs.isBeforeFirst() )
+        ResultSet rs = stmt.executeQuery("select distinct s.count, b.isbn, b.title, b.publication_year, b.price, b.category, b.minimum_stock, b.stock, b.publisher_name " +
+                " from public.sale s, public.book b where s.book_isbn = b.isbn and s.sale_date > '"
+                + Date.valueOf(LocalDate.now().minusMonths(3)) + "' order by s.count desc limit 10; ");
+        if (!rs.isBeforeFirst())
             return new ArrayList<>();
         while (rs.next())
             books.add(new Book(rs));
         return books;
     }
+
     public ArrayList<User> reportTopFiveCustomers() throws SQLException {
         Statement stmt = connection.createStatement();
         ArrayList<User> users = new ArrayList<>();
-        ResultSet rs = stmt.executeQuery("select distinct username, password, email_address, first_name, last_name, phone_number, address, role" +
-                                            " from public.sale s, public.user u where s.username = u.username and sale_date > '"
-                                            + Date.valueOf(LocalDate.now().minusMonths(3)) + "' group by username order by sum(count) desc limit 5; ");
-        if (!rs.isBeforeFirst() )
+        ResultSet rs = stmt.executeQuery("select distinct sum(s.count) , u.username, u.password, u.email_address, u.first_name, u.last_name, u.phone_number, u.address, u.role " +
+                " from public.sale s, public.user u where s.username = u.username and s.sale_date > '"
+                + Date.valueOf(LocalDate.now().minusMonths(3)) + "' group by u.username order by sum(s.count) desc limit 5; ");
+        if (!rs.isBeforeFirst())
             return new ArrayList<>();
         while (rs.next())
             users.add(new User(rs));
@@ -131,17 +129,17 @@ public class ManagerDAO extends DAO {
         return book;
     }
 
-    public Order getOrderByID(String ID) throws SQLException{
+    public Order getOrderByID(String ID) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery("select * from public.order where order_id = " + ID + ";");
         Order order = null;
-        if(rs.next()) {
+        if (rs.next()) {
             order = Order.builder().book_id(rs.getInt("order_id"))
-                                    .book_isbn(rs.getString("book_isbn"))
-                                    .count(rs.getInt("count"))
-                                    .username(rs.getString("username"))
-                                    .order_date(rs.getDate("order_date"))
-                                    .build();
+                    .book_isbn(rs.getString("book_isbn"))
+                    .count(rs.getInt("count"))
+                    .username(rs.getString("username"))
+                    .order_date(rs.getDate("order_date"))
+                    .build();
         }
 
         return order;

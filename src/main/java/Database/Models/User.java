@@ -21,14 +21,14 @@ public class User {
     private String role;
 
     public User(ResultSet set) throws SQLException {
-        this.username = set.getString(1);
-        this.password = set.getString(2);
-        this.email_address = set.getString(3);
-        this.first_name = set.getString(4);
-        this.last_name = set.getString(5);
-        this.phone_number = set.getString(6);
-        this.address = set.getString(7);
-        this.role = set.getString(8);
+        this.username = set.getString("username");
+        this.password = set.getString("password");
+        this.email_address = set.getString("email_address");
+        this.first_name = set.getString("first_name");
+        this.last_name = set.getString("last_name");
+        this.phone_number = set.getString("phone_number");
+        this.address = set.getString("address");
+        this.role = set.getString("role");
     }
 
     @Override

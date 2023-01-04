@@ -69,13 +69,13 @@ public class HomeController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        isbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
-        title.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
-        publicationYear.setCellValueFactory(new PropertyValueFactory<Book, Date>("publication_year"));
-        price.setCellValueFactory(new PropertyValueFactory<Book, Float>("price"));
-        category.setCellValueFactory(new PropertyValueFactory<Book, String>("category"));
-        stock.setCellValueFactory(new PropertyValueFactory<Book, Integer>("stock"));
-        publisher.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher_name"));
+        isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        publicationYear.setCellValueFactory(new PropertyValueFactory<>("publication_year"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        publisher.setCellValueFactory(new PropertyValueFactory<>("publisher_name"));
 
         searchAttribute.setItems(FXCollections.observableArrayList("ISBN", "Title", "Publication Year", "Price", "Category", "Stock", "Publisher"));
         comboBoxSelection.put("ISBN", "isbn");

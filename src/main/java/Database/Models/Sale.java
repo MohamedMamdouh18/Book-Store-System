@@ -11,10 +11,10 @@ import java.util.UUID;
 @Setter
 @AllArgsConstructor
 public class Sale {
-    private int sale_id;
+    private Integer sale_id;
     private String book_isbn;
     private String username;
-    private int count;
+    private Integer count;
     private Date sale_date;
 
     public Sale(int sale_id, String book_isbn, String username, Date sale_date, int count) {

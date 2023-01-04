@@ -22,14 +22,14 @@ public class Book implements Cloneable{
     private String publisher_name;
 
     public Book(ResultSet set) throws SQLException {
-        this.isbn = set.getString(1);
-        this.title = set.getString(2);
-        this.publication_year = set.getDate(3);
-        this.price = set.getFloat(4);
-        this.category = set.getString(5);
-        this.minimum_stock = set.getInt(6);
-        this.stock = set.getInt(7);
-        this.publisher_name = set.getString(8);
+        this.isbn = set.getString("isbn");
+        this.title = set.getString("title");
+        this.publication_year = set.getDate("publication_year");
+        this.price = set.getFloat("price");
+        this.category = set.getString("category");
+        this.minimum_stock = set.getInt("minimum_stock");
+        this.stock = set.getInt("stock");
+        this.publisher_name = set.getString("publisher_name");
     }
 
     @Override

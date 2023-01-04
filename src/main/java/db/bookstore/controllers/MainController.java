@@ -1,6 +1,5 @@
 package db.bookstore.controllers;
 
-import Database.Models.User;
 import db.bookstore.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,6 +28,9 @@ public class MainController implements Initializable {
     @FXML
     private Button managerButton;
 
+    @FXML
+    private Button managerReports;
+
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -41,6 +43,7 @@ public class MainController implements Initializable {
         pagesPane.setVisible(!pagesPane.isVisible());
         firstNameWelcomeLabel.setText("Hello, " + UserInfo.currentUser.getFirst_name());
         managerButton.setVisible(UserInfo.currentUser.getRole().equalsIgnoreCase("manager"));
+        managerReports.setVisible(UserInfo.currentUser.getRole().equalsIgnoreCase("manager"));
     }
 
     @FXML
@@ -67,5 +70,10 @@ public class MainController implements Initializable {
     @FXML
     void cartOnAction(ActionEvent event) throws IOException {
         RoutingHandler.changeView(RoutingHandler.Cart);
+    }
+
+    @FXML
+    void managerReportsOnAction(ActionEvent event) throws IOException {
+        RoutingHandler.changeView(RoutingHandler.ManagerReports);
     }
 }

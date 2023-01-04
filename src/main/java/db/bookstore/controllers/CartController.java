@@ -86,13 +86,13 @@ public class CartController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        isbn.setCellValueFactory(new PropertyValueFactory<Book, String>("isbn"));
-        title.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
-        publicationYear.setCellValueFactory(new PropertyValueFactory<Book, Date>("publication_year"));
-        price.setCellValueFactory(new PropertyValueFactory<Book, Float>("price"));
-        category.setCellValueFactory(new PropertyValueFactory<Book, String>("category"));
-        quantity.setCellValueFactory(new PropertyValueFactory<Book, Integer>("stock"));
-        publisher.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher_name"));
+        isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        publicationYear.setCellValueFactory(new PropertyValueFactory<>("publication_year"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        quantity.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        publisher.setCellValueFactory(new PropertyValueFactory<>("publisher_name"));
 
         bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
         bookDetails.setVisible(false);
@@ -179,6 +179,8 @@ public class CartController implements Initializable {
         bookTable.refresh();
         totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
         bookStock.setText(currentBook.getStock().toString());
+        if(currentBook.getStock() == 1)
+            bookDetails.setVisible(false);
     }
 
     void hideLabels() {
