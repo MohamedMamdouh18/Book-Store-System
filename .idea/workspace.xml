@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="187c5f0c-2971-4ecd-9c2a-ba562794747b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/ManagerReportsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/bookstore/ManagerReports.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/DAO/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DAO/ManagerDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/Models/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/Models/Book.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/Models/Sale.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/Models/Sale.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Database/Models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/Models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/CartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/RoutingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/RoutingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/bookstore/MainView.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/bookstore/MainView.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/UserProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/bookstore/UserProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/bookstore/UserProfile.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +114,8 @@
       <workItem from="1672678538684" duration="14483000" />
       <workItem from="1672753733502" duration="16891000" />
       <workItem from="1672775872767" duration="1638000" />
-      <workItem from="1672863736785" duration="4257000" />
+      <workItem from="1672863736785" duration="4543000" />
+      <workItem from="1672869218187" duration="1958000" />
     </task>
     <servers />
   </component>
