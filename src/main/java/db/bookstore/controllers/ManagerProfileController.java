@@ -358,7 +358,7 @@ public class ManagerProfileController {
             try {
                 System.out.println(managerDAO.getBookByISBN("7"));
                 String username = promotionUserNameTextField.getText();
-                managerDAO.promoteCutomer(username);
+                managerDAO.promoteCustomer(username);
                 promotePrompt.setText(username + " is promoted");
                 promotePrompt.setTextFill(Color.GREEN);
                 promotePrompt.setVisible(true);

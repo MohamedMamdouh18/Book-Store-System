@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+public class Book implements Cloneable{
     private String isbn;
     private String title;
     private Date publication_year;

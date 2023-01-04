@@ -1,16 +1,15 @@
 package Database.Models;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.UUID;
 
 @Builder
 @Getter
 @Setter
-@NoArgsConstructor
+@AllArgsConstructor
 public class Sale {
     private int sale_id;
     private String book_isbn;
@@ -18,7 +17,7 @@ public class Sale {
     private int count;
     private Date sale_date;
 
-    public Sale(int sale_id, String book_isbn, String username, int count, Date sale_date) {
+    public Sale(int sale_id, String book_isbn, String username, Date sale_date, int count) {
         this.sale_id = sale_id;
         this.book_isbn = book_isbn;
         this.username = username;
@@ -26,6 +25,13 @@ public class Sale {
         this.sale_date = sale_date;
     }
 
+    public Sale(ResultSet set) throws SQLException {
+        this.book_isbn = set.getString("book_isbn");
+        this.username = set.getString("username");
+        this.count = set.getInt("count");
+        this.sale_date = set.getDate("sale_date");
+        this.sale_id = set.getInt("sale_id");
+    }
     @Override
     public String toString() {
         return "(default,  '" +
@@ -36,3 +42,4 @@ public class Sale {
                 ")";
     }
 }
+
