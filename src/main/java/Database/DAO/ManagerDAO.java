@@ -48,7 +48,6 @@ public class ManagerDAO extends DAO {
     public void addAuthors(String isbn, List<String> authors) throws SQLException {
         Statement stmt = connection.createStatement();
         for (var author : authors) {
-            System.out.println("values" + "(" + isbn + ", " + author + ")" + ";");
             stmt.execute("insert into public.book_author " +
                     "values" + "('" + isbn + "', '" + author + "')" + ";");
         }
@@ -62,7 +61,6 @@ public class ManagerDAO extends DAO {
 
 
     public void placeOrder(Order order) throws SQLException {
-        System.out.println(order.toString());
         Statement stmt = connection.createStatement();
         stmt.execute("insert into public.order " +
                 "values" + order.toString() + ";");

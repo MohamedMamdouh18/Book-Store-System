@@ -86,6 +86,15 @@ public class CartController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        setBookTable();
+
+        bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
+        bookDetails.setVisible(false);
+        totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
+        hideLabels();
+    }
+
+    void setBookTable() {
         isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         title.setCellValueFactory(new PropertyValueFactory<>("title"));
         publicationYear.setCellValueFactory(new PropertyValueFactory<>("publication_year"));
@@ -93,11 +102,6 @@ public class CartController implements Initializable {
         category.setCellValueFactory(new PropertyValueFactory<>("category"));
         quantity.setCellValueFactory(new PropertyValueFactory<>("stock"));
         publisher.setCellValueFactory(new PropertyValueFactory<>("publisher_name"));
-
-        bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
-        bookDetails.setVisible(false);
-        totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
-        hideLabels();
     }
 
     @FXML
@@ -172,15 +176,15 @@ public class CartController implements Initializable {
     @FXML
     void removeBook(ActionEvent event) {
         hideLabels();
-        cartRemove.setVisible(true);
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
+        if (currentBook.getStock() == 1)
+            bookDetails.setVisible(false);
+        cartRemove.setVisible(true);
         UserInfo.userCart.removeBook(currentBook);
         bookTable.setItems(FXCollections.observableArrayList(UserInfo.userCart.getCartList()));
         bookTable.refresh();
         totalPrice.setText(UserInfo.userCart.getCartPrice().toString());
         bookStock.setText(currentBook.getStock().toString());
-        if(currentBook.getStock() == 1)
-            bookDetails.setVisible(false);
     }
 
     void hideLabels() {

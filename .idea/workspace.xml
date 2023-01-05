@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="187c5f0c-2971-4ecd-9c2a-ba562794747b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database/DAO/ManagerDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DAO/ManagerDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Database/DBConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Database/DBConnector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/ManagerProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/ManagerProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/UserProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db/bookstore/controllers/UserProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/db/bookstore/UserProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/bookstore/UserProfile.fxml" afterDir="false" />
     </list>
@@ -116,6 +121,7 @@
       <workItem from="1672775872767" duration="1638000" />
       <workItem from="1672863736785" duration="4543000" />
       <workItem from="1672869218187" duration="1958000" />
+      <workItem from="1672903079652" duration="1470000" />
     </task>
     <servers />
   </component>

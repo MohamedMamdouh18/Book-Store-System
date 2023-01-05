@@ -5,7 +5,9 @@ import db.bookstore.UserInfo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -24,7 +26,10 @@ public class UserProfileController implements Initializable {
     private TextField lastName;
 
     @FXML
-    private TextField password;
+    private TextField passwordVisible;
+
+    @FXML
+    private PasswordField passwordHidden;
 
     @FXML
     private TextField phoneNumber;
@@ -38,13 +43,15 @@ public class UserProfileController implements Initializable {
     @FXML
     private Label error;
 
+    @FXML
+    private CheckBox checkBox;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         emailAddress.setText(UserInfo.currentUser.getEmail_address());
         firstName.setText(UserInfo.currentUser.getFirst_name());
         lastName.setText(UserInfo.currentUser.getLast_name());
-        password.setText(UserInfo.currentUser.getPassword());
+        passwordHidden.setText(UserInfo.currentUser.getPassword());
         phoneNumber.setText(UserInfo.currentUser.getPhone_number());
         shipping.setText(UserInfo.currentUser.getAddress());
         savedChanges.setVisible(false);
@@ -59,7 +66,7 @@ public class UserProfileController implements Initializable {
             DAO.changeUserProfile(user.getUsername(), "email_address", emailAddress.getText());
             DAO.changeUserProfile(user.getUsername(), "first_name", firstName.getText());
             DAO.changeUserProfile(user.getUsername(), "last_name", lastName.getText());
-            DAO.changeUserProfile(user.getUsername(), "password", password.getText());
+            DAO.changeUserProfile(user.getUsername(), "password", (checkBox.isSelected()) ? passwordVisible.getText() : passwordHidden.getText());
             DAO.changeUserProfile(user.getUsername(), "phone_number", phoneNumber.getText());
             DAO.changeUserProfile(user.getUsername(), "address", shipping.getText());
             savedChanges.setVisible(true);
@@ -69,5 +76,18 @@ public class UserProfileController implements Initializable {
             savedChanges.setVisible(false);
         }
 
+    }
+
+    @FXML
+    void checkBoxOnAction(ActionEvent event) {
+        if (checkBox.isSelected()) {
+            passwordVisible.setText(passwordHidden.getText());
+            passwordVisible.setVisible(true);
+            passwordHidden.setVisible(false);
+            return;
+        }
+        passwordHidden.setText(passwordVisible.getText());
+        passwordHidden.setVisible(true);
+        passwordVisible.setVisible(false);
     }
 }

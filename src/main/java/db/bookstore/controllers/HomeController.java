@@ -13,7 +13,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lombok.SneakyThrows;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -69,13 +68,7 @@ public class HomeController implements Initializable {
     @SneakyThrows
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
-        title.setCellValueFactory(new PropertyValueFactory<>("title"));
-        publicationYear.setCellValueFactory(new PropertyValueFactory<>("publication_year"));
-        price.setCellValueFactory(new PropertyValueFactory<>("price"));
-        category.setCellValueFactory(new PropertyValueFactory<>("category"));
-        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        publisher.setCellValueFactory(new PropertyValueFactory<>("publisher_name"));
+        setBookTable();
 
         searchAttribute.setItems(FXCollections.observableArrayList("ISBN", "Title", "Publication Year", "Price", "Category", "Stock", "Publisher"));
         comboBoxSelection.put("ISBN", "isbn");
@@ -93,8 +86,18 @@ public class HomeController implements Initializable {
         cartAdding.setVisible(false);
     }
 
+    void setBookTable() {
+        isbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        publicationYear.setCellValueFactory(new PropertyValueFactory<>("publication_year"));
+        price.setCellValueFactory(new PropertyValueFactory<>("price"));
+        category.setCellValueFactory(new PropertyValueFactory<>("category"));
+        stock.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        publisher.setCellValueFactory(new PropertyValueFactory<>("publisher_name"));
+    }
+
     @FXML
-    void searchOnAction(ActionEvent event) throws IOException, SQLException {
+    void searchOnAction(ActionEvent event) throws SQLException {
         bookDetails.setVisible(false);
 
         String attribute = comboBoxSelection.get(searchAttribute.getValue());
@@ -104,7 +107,7 @@ public class HomeController implements Initializable {
     }
 
     @FXML
-    void tableSelectBook(MouseEvent event) throws IOException, SQLException {
+    void tableSelectBook(MouseEvent event) throws SQLException {
         Book currentBook = bookTable.getSelectionModel().getSelectedItem();
         if (currentBook != null) {
             bookDetails.setVisible(true);
@@ -138,5 +141,4 @@ public class HomeController implements Initializable {
             cartAdding.setVisible(true);
         }
     }
-
 }
