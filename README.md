@@ -34,7 +34,7 @@ A System that shows the available books to the clients and allows the manager to
 
 **Client:** JavaFX
 
-**Server:** MYSQL, Supabase
+**Server:** PostgreSQL, Supabase
 
 
 ## Screenshots
