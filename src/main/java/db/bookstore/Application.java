@@ -32,7 +32,7 @@ public class Application extends javafx.application.Application {
         });
         Scene scene = new Scene(root, 900, 600);
         stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("Wezza w Do7a w Mo2");
+        stage.setTitle("Book Store System");
         stage.setScene(scene);
         stage.show();
     }
