@@ -59,7 +59,7 @@ To clone the project, run the following command in your terminal:
 ```
 
 ### Configure the database
-- Open the DBConstants.java file located in the src/main/java/com/bookstore/constants directory.
+- Open the DBConstants.java file located in the src/main/java/Database directory.
 - Change the following variables according to your PostgreSQL and Supabase configurations:
 ```java
 public static final String DatabaseURL = "your_database_url";
