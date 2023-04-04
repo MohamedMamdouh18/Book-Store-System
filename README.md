@@ -62,9 +62,9 @@ To clone the project, run the following command in your terminal:
 - Open the DBConstants.java file located in the src/main/java/Database directory.
 - Change the following variables according to your PostgreSQL and Supabase configurations:
 ```java
-public static final String DatabaseURL = "your_database_url";
-public static final String username = "your_database_username";
-public static final String password = "your_database_password";
+public final static String DatabaseURL = "your_database_url";
+public final static String username = "your_database_username";
+public final static String password = "your_database_password";
 ```
 Note: Make sure to replace your_database_url, your_database_username, and your_database_password with your actual PostgreSQL and Supabase credentials and for every role the application have -Admin, Manager and Customer-.
 
